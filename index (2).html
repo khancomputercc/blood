@@ -1,0 +1,5142 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>রক্তবন্ধু - জীবন বাঁচাতে এক ফোঁটা রক্ত</title>
+    <!-- ফন্ট অ্যাওসাম -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- গুগল ফন্ট (বাংলা) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- অ্যানিমেট সিএসএস -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- চার্ট.জিএস -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #D32F2F;
+            --primary-dark: #B71C1C;
+            --primary-light: #FFCDD2;
+            --secondary-color: #2C3E50;
+            --accent-color: #E74C3C;
+            --success-color: #27AE60;
+            --warning-color: #F39C12;
+            --danger-color: #E74C3C;
+            --info-color: #3498DB;
+            --bg-light: #F8F9FA;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 15px 40px rgba(0,0,0,0.15);
+            --shadow-inset: inset 0 2px 4px rgba(0,0,0,0.06);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* স্ক্রলবার ডিজাইন */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* হেডার স্টাইল */
+        .header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+
+        .btn-emergency {
+            background: var(--primary-color);
+            color: white !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-emergency:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* হিরো সেকশন */
+        .hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(211, 47, 47, 0.85)), url('https://images.unsplash.com/photo-1615461066841-6116e61058f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.6) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quick-search {
+            display: flex;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 50px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+        }
+
+        .quick-search input,
+        .quick-search select {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            background: transparent;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .quick-search select {
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .btn-search {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .btn-search:hover {
+            background: var(--primary-dark);
+        }
+
+        /* সেকশন টাইটেল */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: var(--text-dark);
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-title:before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-2px);
+            width: 30px;
+            height: 8px;
+            background: var(--white);
+            border-radius: 4px;
+            z-index: 1;
+        }
+
+        /* স্ট্যাটস সেকশন */
+        .stats {
+            padding: 6rem 5%;
+            background: var(--white);
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-item i {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            background: rgba(211, 47, 47, 0.1);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover i {
+            transform: scale(1.1) rotate(360deg);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* হাউ ইট ওয়ার্কস */
+        .how-it-works {
+            padding: 6rem 5%;
+            background: var(--bg-light);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: var(--radius);
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid transparent;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-top-color: var(--primary-color);
+        }
+
+        .step-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 4rem;
+            color: rgba(0,0,0,0.03);
+            font-weight: 900;
+        }
+
+        .step i {
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+            font-size: 3rem;
+            background: rgba(211, 47, 47, 0.05);
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .step:hover i {
+            background: var(--primary-color);
+            color: white;
+            transform: rotateY(360deg);
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .step p {
+            color: var(--text-light);
+        }
+
+        /* ইমার্জেন্সি রিকোয়েস্ট */
+        .emergency-requests {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .requests-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .request-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border-left: 5px solid var(--primary-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .request-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .request-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .request-card p {
+            margin: 0.8rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .request-card i {
+            width: 20px;
+            color: var(--secondary-color);
+        }
+
+        .no-requests {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            grid-column: 1 / -1;
+            padding: 3rem;
+            background: #f8f9fa;
+            border-radius: var(--radius);
+        }
+
+        /* ফটো গ্যালারি সেকশন */
+        .photo-gallery {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            background: white;
+            color: var(--text-dark);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem 1rem 1rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(211, 47, 47, 0.9);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        /* টিম মেম্বার সেকশন */
+        .team-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-section .section-title {
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+
+        .team-section .section-title:after {
+            background: white;
+        }
+
+        .team-section .section-title:before {
+            background: var(--secondary-color);
+        }
+
+        /* ক্যারোসেল কন্টেইনার */
+        .team-carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .team-carousel {
+            flex: 1;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .team-container {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+            min-height: 400px;
+        }
+
+        /* টিম কার্ড */
+        .team-card {
+            flex: 0 0 calc(33.333% - 1.33rem);
+            min-width: 280px;
+            perspective: 1500px;
+            height: 400px;
+        }
+
+        .team-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .team-card:hover .team-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .team-card-front, .team-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-card-front {
+            background: white;
+        }
+
+        .team-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card-front .front-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 2rem 1rem 1rem;
+            text-align: left;
+        }
+
+        .team-card-front h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: white;
+        }
+
+        .team-card-front .position {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+        }
+
+        .experience-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        .team-card-back {
+            background: var(--secondary-color);
+            color: white;
+            transform: rotateY(180deg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .team-card-back h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .team-card-back .position {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .team-card-back .bio {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .specialization-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .specialization-tags span {
+            background: rgba(255,255,255,0.1);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .team-card-back .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .team-card-back .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .team-card-back .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        /* অ্যারো বাটন */
+        .carousel-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 3;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .carousel-arrow:active {
+            transform: scale(0.95);
+        }
+
+        .carousel-arrow i {
+            font-size: 1.2rem;
+        }
+
+        /* ডট ইন্ডিকেটর */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot:hover {
+            background: rgba(255,255,255,0.6);
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* ডোনার কার্ড */
+        .donor-gallery {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9e9e9 100%);
+        }
+
+        .donor-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .donor-card-new {
+            background: white;
+            border-radius: 30px;
+            padding: 1.5rem;
+            box-shadow: 
+                20px 20px 60px #d9d9d9,
+                -20px -20px 60px #ffffff;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donor-card-new:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                25px 25px 60px #d9d9d9,
+                -25px -25px 60px #ffffff;
+        }
+
+        .donor-card-new:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(211,47,47,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .donor-card-new:hover:before {
+            opacity: 1;
+        }
+
+        .donor-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .donor-avatar {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .donor-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .blood-drop {
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 3px solid white;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            animation: bloodDrop 2s infinite;
+        }
+
+        @keyframes bloodDrop {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .donor-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-dark);
+        }
+
+        .verified-badge {
+            color: #27AE60;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .donor-level {
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .donor-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+
+        .donor-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .detail-item:hover {
+            background: #f8f9fa;
+        }
+
+        .detail-item i {
+            width: 30px;
+            color: var(--primary-color);
+        }
+
+        .donor-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px dashed #eee;
+        }
+
+        .last-donation {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .last-donation i {
+            color: var(--primary-color);
+            margin-right: 0.3rem;
+        }
+
+        .btn-contact {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+        }
+
+        /* আধুনিক ফর্ম ডিজাইন */
+        .modern-form-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #2C3E50 0%, #3498DB 100%);
+        }
+
+        .modern-form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .form-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            opacity: 0.9;
+        }
+
+        .form-progress {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 3rem;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+
+        .progress-step {
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .progress-step.active .step-number {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .progress-step.completed .step-number {
+            background: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .progress-step.active .step-label {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .modern-form {
+            padding: 3rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modern-input-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .modern-input-group input,
+        .modern-input-group select,
+        .modern-input-group textarea {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-family: 'Hind Siliguri', sans-serif;
+            transition: var(--transition);
+            background: #f8f9fa;
+        }
+
+        .modern-input-group input:focus,
+        .modern-input-group select:focus,
+        .modern-input-group textarea:focus {
+            border-color: var(--primary-color);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.1);
+        }
+
+        .modern-input-group i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .modern-input-group textarea ~ i {
+            top: 1.5rem;
+            transform: none;
+        }
+
+        .floating-label {
+            position: absolute;
+            left: 3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            padding: 0 0.5rem;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .modern-input-group input:focus ~ .floating-label,
+        .modern-input-group input:not(:placeholder-shown) ~ .floating-label,
+        .modern-input-group select:focus ~ .floating-label,
+        .modern-input-group select:not([value=""]):valid ~ .floating-label {
+            top: 0;
+            left: 1rem;
+            font-size: 0.8rem;
+            background: white;
+            color: var(--primary-color);
+            padding: 0 0.5rem;
+        }
+
+        .modern-input-group textarea ~ .floating-label {
+            top: 1.5rem;
+            transform: none;
+        }
+
+        .modern-input-group textarea:focus ~ .floating-label,
+        .modern-input-group textarea:not(:placeholder-shown) ~ .floating-label {
+            top: -0.5rem;
+            left: 1rem;
+            font-size: 0.8rem;
+            background: white;
+        }
+
+        .modern-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modern-checkbox:hover {
+            background: #e9ecef;
+        }
+
+        .modern-checkbox input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--primary-color);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-prev,
+        .btn-next,
+        .btn-submit-modern {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-prev {
+            background: #f8f9fa;
+            color: var(--text-dark);
+        }
+
+        .btn-next,
+        .btn-submit-modern {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-prev:hover,
+        .btn-next:hover,
+        .btn-submit-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-prev:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ক্যাম্পেইন সেকশন */
+        .campaigns {
+            padding: 6rem 5%;
+            background: var(--bg-light);
+        }
+
+        .campaign-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .campaign-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .campaign-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary-color), #e57373);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .campaign-image::after {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            top: -50%;
+            left: -50%;
+        }
+
+        .campaign-content {
+            padding: 2rem;
+        }
+
+        .campaign-content h3 {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            line-height: 1.4;
+        }
+
+        .campaign-content p {
+            margin: 0.8rem 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .campaign-content i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+
+        /* এডমিন প্যানেল স্টাইল */
+        .admin-panel-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .admin-login-box {
+            max-width: 450px;
+            margin: 100px auto;
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideIn 0.5s;
+        }
+
+        .admin-login-box h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .admin-login-box .input-group {
+            margin-bottom: 20px;
+        }
+
+        .admin-login-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .admin-login-box input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(211,47,47,0.1);
+        }
+
+        .admin-login-box button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 10px;
+        }
+
+        .admin-login-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(211,47,47,0.3);
+        }
+
+        .admin-login-box .back-btn {
+            background: #95a5a6;
+        }
+
+        .admin-login-box .back-btn:hover {
+            background: #7f8c8d;
+        }
+
+        .admin-dashboard {
+            display: none;
+            min-height: 100vh;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        .admin-header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .admin-header h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .admin-stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+
+        .admin-stat-card:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .admin-stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            background: rgba(211,47,47,0.1);
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            border-radius: 50%;
+        }
+
+        .admin-stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .admin-tab {
+            padding: 12px 25px;
+            border: none;
+            background: #f8f9fa;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .admin-tab:hover {
+            background: #e9ecef;
+        }
+
+        .admin-tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .admin-table-container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        .admin-table-container h3 {
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .admin-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* স্ট্যাটাস ব্যাজ */
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+
+        .status-processing {
+            background: #cce5ff;
+            color: #004085;
+            border: 1px solid #b8daff;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-cancelled {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .select-donor {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-family: 'Hind Siliguri', sans-serif;
+            background: white;
+            cursor: pointer;
+        }
+
+        .btn-approve {
+            background: #27AE60;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: var(--transition);
+        }
+
+        .btn-approve:hover {
+            background: #219150;
+            transform: translateY(-2px);
+        }
+
+        .btn-reject {
+            background: #e74c3c;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-reject:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .logout-btn {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .logout-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* ম্যাচিং কার্ড স্টাইল */
+        .matching-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .patient-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+        }
+
+        .matching-info {
+            flex: 1;
+        }
+
+        .matching-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .matching-info p {
+            margin: 2px 0;
+            opacity: 0.9;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* ফুটার */
+        .footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 5rem 5% 2rem;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+        }
+
+        /* লাইটবক্স */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        .lightbox-content {
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lightbox-close:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--primary-color);
+        }
+
+        .lightbox-nav.prev {
+            left: -70px;
+        }
+
+        .lightbox-nav.next {
+            right: -70px;
+        }
+
+        /* ব্যাক টু টপ বাটন */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        #backToTop:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* অ্যানিমেশন */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* রেসপনসিভ ডিজাইন */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .lightbox-nav.prev { left: -30px; }
+            .lightbox-nav.next { right: -30px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow-md);
+                gap: 15px;
+            }
+            .nav-menu.active {
+                display: flex;
+                animation: slideDown 0.3s ease;
+            }
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .hamburger {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .quick-search {
+                flex-direction: column;
+                border-radius: 15px;
+                padding: 1rem;
+            }
+            .quick-search input,
+            .quick-search select,
+            .btn-search {
+                width: 100%;
+                border-radius: 10px;
+                border: 1px solid #eee;
+                margin-bottom: 10px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-section h4:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .social-links {
+                justify-content: center;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                padding: 0 20px;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            .stats {
+                margin-top: 0;
+                border-radius: 0;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            .modern-form {
+                padding: 2rem;
+            }
+            .admin-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            .team-container,
+            .donor-container {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .form-header {
+                padding: 2rem;
+            }
+            .form-progress {
+                padding: 1rem;
+            }
+            .modern-form {
+                padding: 1.5rem;
+            }
+        }
+
+        /* নতুন কাস্টমাইজেশন স্টাইল */
+        .customization-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .customization-section h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .customization-section h4 i {
+            color: var(--primary-color);
+        }
+
+        .customization-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .customization-control {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .customization-control label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .customization-control input,
+        .customization-control select {
+            padding: 8px 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .customization-control input:focus,
+        .customization-control select:focus {
+            border-color: var(--primary-color);
+        }
+
+        .customization-preview {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 2px dashed #ddd;
+        }
+
+        /* ডোনেশন ম্যানেজমেন্ট স্টাইল */
+        .donation-management-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+
+        .patient-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #eee;
+        }
+
+        .patient-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+        }
+
+        .patient-info h3 {
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .patient-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin: 3px 0;
+        }
+
+        .matching-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .status-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .assigned-info {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 12px;
+            color: #2e7d32;
+            margin-top: 15px;
+        }
+
+        /* টোস্ট নোটিফিকেশন */
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 5px 20px rgba(39,174,96,0.3);
+            z-index: 5000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .toast-notification.show {
+            transform: translateX(0);
+        }
+
+        .toast-notification i {
+            font-size: 1.5rem;
+        }
+
+        /* ইমেজ আপলোড স্টাইল */
+        .image-upload-container {
+            border: 2px dashed var(--primary-color);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: #f8f9fa;
+        }
+
+        .image-upload-container:hover {
+            background: var(--primary-light);
+            border-color: var(--primary-dark);
+        }
+
+        .image-upload-container i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .image-upload-input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- হেডার সেকশন -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h2><i class="fas fa-hand-holding-drop"></i> নি:স্বার্থ ব্লাড ব্যাংক ফাউন্ডেশন</h2>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">হোম</a></li>
+                <li><a href="#find-blood">রক্ত খুঁজুন</a></li>
+                <li><a href="#register">ডোনার হন</a></li>
+                <li><a href="#team">আমাদের টিম</a></li>
+                <li><a href="#gallery">গ্যালারি</a></li>
+                <li><a href="#campaign">ক্যাম্পেইন</a></li>
+                <li><a href="#" onclick="showAdminPanel()">এডমিন</a></li>
+            </ul>
+            <div class="emergency-btn">
+                <a href="#request" class="btn-emergency"><i class="fas fa-exclamation-circle"></i> জরুরি রক্ত প্রয়োজন</a>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- মেইন কন্টেন্ট -->
+    <div id="mainContent">
+        <!-- হিরো সেকশন -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="animate__animated animate__fadeInDown">এক ফোঁটা রক্ত বাঁচাতে পারে একটি জীবন</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">আজই রক্ত দিন, হয়ে উঠুন কারো না কারো জীবন বাঁচানোর কারণ। আমাদের সাথে যুক্ত হোন।</p>
+                <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-2s">
+                    <a href="#find-blood" class="btn-primary" onclick="showSearchSection()"><i class="fas fa-search"></i> রক্ত খুঁজুন</a>
+                    <a href="#register" class="btn-secondary"><i class="fas fa-user-plus"></i> ডোনার হন</a>
+                </div>
+                <div class="quick-search animate__animated animate__fadeInUp animate__delay-3s">
+                    <input type="text" placeholder="আপনার জেলা লিখুন..." id="searchLocation">
+                    <select id="searchBloodGroup">
+                        <option value="">ব্লাড গ্রুপ সিলেক্ট করুন</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                    <button class="btn-search" onclick="searchDonors()"><i class="fas fa-search"></i> খুঁজুন</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- স্ট্যাটস সেকশন -->
+        <section class="stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <h3 class="counter" id="totalDonors">1247</h3>
+                    <p>মোট ডোনার</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3 class="counter" id="totalDonations">892</h3>
+                    <p>রক্তদান সম্পন্ন</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-hospital-user"></i>
+                    <h3 class="counter" id="totalHospitals">45</h3>
+                    <p>অংশীদার হাসপাতাল</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <h3 class="counter" id="emergencyHours">24</h3>
+                    <p>জরুরি সেবা (ঘন্টা)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- কিভাবে কাজ করে সেকশন -->
+        <section class="how-it-works">
+            <h2 class="section-title">কিভাবে কাজ করে</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon">01</div>
+                    <i class="fas fa-user-check"></i>
+                    <h3>রেজিস্ট্রেশন করুন</h3>
+                    <p>আপনার তথ্য দিন এবং ডোনার হিসেবে নিবন্ধন করুন। এটি সম্পূর্ণ বিনামূল্যে।</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">02</div>
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>প্রয়োজন জানান</h3>
+                    <p>রক্তের প্রয়োজন হলে সাথে সাথে আমাদের ওয়েবসাইটে রিকোয়েস্ট পাঠান।</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">03</div>
+                    <i class="fas fa-ambulance"></i>
+                    <h3>জীবন বাঁচান</h3>
+                    <p>নিকটস্থ ডোনারের সাথে যোগাযোগ করুন এবং জীবন বাঁচানোর মহান কাজে অংশ নিন।</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- টিম মেম্বার সেকশন (ক্যারোসেল সহ) -->
+        <section id="team" class="team-section">
+            <h2 class="section-title" id="teamSectionTitle">আমাদের টিম</h2>
+            
+            <div class="team-carousel-container">
+                <button class="carousel-arrow prev" onclick="slideTeam(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="team-carousel" id="teamCarousel">
+                    <div class="team-container" id="teamMembers"></div>
+                </div>
+                
+                <button class="carousel-arrow next" onclick="slideTeam(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- ডট ইন্ডিকেটর -->
+            <div class="carousel-dots" id="carouselDots"></div>
+        </section>
+
+        <!-- ডোনার কার্ড সেকশন (অটো আপডেট সহ) -->
+        <section id="donors" class="donor-gallery">
+            <h2 class="section-title" id="donorSectionTitle">আমাদের হিরো ডোনার</h2>
+            <div class="donor-container" id="donorContainer"></div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="seeMoreBtn" class="btn-primary" onclick="loadMoreDonors()" style="padding: 12px 40px;">
+                    <i class="fas fa-sync-alt"></i> <span id="seeMoreText">আরও দেখুন</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ফটো গ্যালারি সেকশন (লোড মোর সহ) -->
+        <section id="gallery" class="photo-gallery">
+            <h2 class="section-title" id="gallerySectionTitle">আমাদের কার্যক্রম</h2>
+            <div class="gallery-container">
+                <div class="gallery-filter" id="galleryFilter">
+                    <button class="filter-btn active" onclick="filterGallery('all', this)">সব</button>
+                    <button class="filter-btn" onclick="filterGallery('camp', this)">ব্লাড ডোনেশন ক্যাম্প</button>
+                    <button class="filter-btn" onclick="filterGallery('training', this)">ট্রেনিং প্রোগ্রাম</button>
+                    <button class="filter-btn" onclick="filterGallery('awareness', this)">অ্যাওয়ারনেস প্রোগ্রাম</button>
+                    <button class="filter-btn" onclick="filterGallery('community', this)">কমিউনিটি মিট</button>
+                </div>
+                
+                <div class="gallery-grid" id="galleryGrid"></div>
+                
+                <!-- লোড মোর বাটন -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <button id="galleryLoadMoreBtn" class="btn-primary" onclick="loadMoreGalleryImages()" style="padding: 12px 40px;">
+                        <i class="fas fa-sync-alt"></i> <span id="galleryLoadMoreText">আরও দেখুন</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- রিভিউ সেকশন (ক্যারোসেল সহ) -->
+        <section id="reviews" class="reviews-section">
+            <h2 class="section-title" id="reviewSectionTitle">ডোনারদের মতামত</h2>
+            
+            <div class="reviews-container">
+                <div class="reviews-carousel-container">
+                    <button class="review-arrow prev" onclick="slideReview(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="reviews-carousel" id="reviewsCarousel">
+                        <div class="reviews-wrapper" id="reviewsWrapper"></div>
+                    </div>
+                    
+                    <button class="review-arrow next" onclick="slideReview(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- ডট ইন্ডিকেটর -->
+                <div class="review-dots" id="reviewDots"></div>
+                
+                <!-- রিভিউ দেওয়ার বাটন -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <button class="btn-primary" onclick="showReviewForm()">
+                        <i class="fas fa-pen"></i> আপনার মতামত দিন
+                    </button>
+                </div>
+            </div>
+        </section>
+            
+        <!-- ইমার্জেন্সি রিকোয়েস্ট -->
+        <section class="emergency-requests">
+            <h2 class="section-title">জরুরি রক্তের প্রয়োজন</h2>
+            <div class="requests-container" id="emergencyRequests"></div>
+        </section>
+
+        <!-- আধুনিক ডোনার রেজিস্ট্রেশন ফর্ম (ইমেজ আপলোড সহ) -->
+        <section id="register" class="modern-form-section">
+            <div class="modern-form-container">
+                <div class="form-header">
+                    <h2><i class="fas fa-hand-holding-heart"></i> ডোনার হিসেবে রেজিস্টার করুন</h2>
+                    <p>একটি জীবন বাঁচাতে আজই এগিয়ে আসুন</p>
+                </div>
+                
+                <div class="form-progress">
+                    <div class="progress-step active" id="step1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">ব্যক্তিগত তথ্য</div>
+                    </div>
+                    <div class="progress-step" id="step2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">চিকিৎসা সংক্রান্ত</div>
+                    </div>
+                    <div class="progress-step" id="step3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">যোগাযোগ ও ছবি</div>
+                    </div>
+                </div>
+
+                <form id="donorRegistrationForm" class="modern-form">
+                    <!-- স্টেপ 1: ব্যক্তিগত তথ্য -->
+                    <div class="form-step" id="step1-content">
+                        <div class="modern-input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="name" required placeholder=" ">
+                            <label class="floating-label">আপনার পূর্ণ নাম</label>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="modern-input-group">
+                                <i class="fas fa-calendar"></i>
+                                <input type="date" id="dob" required placeholder=" ">
+                                <label class="floating-label">জন্ম তারিখ</label>
+                            </div>
+                            
+                            <div class="modern-input-group">
+                                <i class="fas fa-venus-mars"></i>
+                                <select id="gender" required>
+                                    <option value=""></option>
+                                    <option value="male">পুরুষ</option>
+                                    <option value="female">মহিলা</option>
+                                    <option value="other">অন্যান্য</option>
+                                </select>
+                                <label class="floating-label">লিঙ্গ</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="modern-input-group">
+                                <i class="fas fa-tint"></i>
+                                <select id="bloodGroup" required>
+                                    <option value=""></option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                                <label class="floating-label">ব্লাড গ্রুপ</label>
+                            </div>
+                            
+                            <div class="modern-input-group">
+                                <i class="fas fa-weight"></i>
+                                <input type="number" id="weight" min="45" max="150" required placeholder=" ">
+                                <label class="floating-label">ওজন (কেজি)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- স্টেপ 2: চিকিৎসা সংক্রান্ত -->
+                    <div class="form-step" id="step2-content" style="display: none;">
+                        <div class="modern-checkbox">
+                            <input type="checkbox" id="health1" required>
+                            <span class="checkbox-custom"></span>
+                            <label>আমি শারীরিকভাবে সম্পূর্ণ সুস্থ আছি</label>
+                        </div>
+                        
+                        <div class="modern-checkbox">
+                            <input type="checkbox" id="health2" required>
+                            <span class="checkbox-custom"></span>
+                            <label>গত ৬ মাসে আমার কোন অস্ত্রোপচার হয়নি</label>
+                        </div>
+                        
+                        <div class="modern-checkbox">
+                            <input type="checkbox" id="health3" required>
+                            <span class="checkbox-custom"></span>
+                            <label>আমার ডায়াবেটিস/উচ্চ রক্তচাপ নেই</label>
+                        </div>
+                        
+                        <div class="modern-checkbox">
+                            <input type="checkbox" id="health4" required>
+                            <span class="checkbox-custom"></span>
+                            <label>গত ৩ মাসে আমি ট্যাটু করাইনি</label>
+                        </div>
+                        
+                        <div class="modern-input-group">
+                            <i class="fas fa-notes-medical"></i>
+                            <textarea id="medicalHistory" rows="3" placeholder=" "></textarea>
+                            <label class="floating-label">অন্যান্য চিকিৎসা ইতিহাস (যদি থাকে)</label>
+                        </div>
+                    </div>
+
+                    <!-- স্টেপ 3: যোগাযোগ ও ছবি -->
+                    <div class="form-step" id="step3-content" style="display: none;">
+                        <div class="form-row">
+                            <div class="modern-input-group">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="phone" required placeholder=" ">
+                                <label class="floating-label">মোবাইল নম্বর</label>
+                            </div>
+                            
+                            <div class="modern-input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" required placeholder=" ">
+                                <label class="floating-label">ইমেইল</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="modern-input-group">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" id="district" required placeholder=" ">
+                                <label class="floating-label">জেলা</label>
+                            </div>
+                            
+                            <div class="modern-input-group">
+                                <i class="fas fa-location-dot"></i>
+                                <input type="text" id="thana" required placeholder=" ">
+                                <label class="floating-label">থানা</label>
+                            </div>
+                        </div>
+                        
+                        <!-- ইমেজ আপলোড (নতুন ফিচার) -->
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label>প্রোফাইল ছবি (ঐচ্ছিক)</label>
+                            <div class="image-upload-container" onclick="document.getElementById('donorImageInput').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>ছবি আপলোড করতে ক্লিক করুন (JPG, PNG)</p>
+                                <input type="file" id="donorImageInput" class="image-upload-input" accept="image/*" onchange="previewImage(this, 'donorImagePreview')">
+                                <img id="donorImagePreview" class="image-preview" src="#" alt="Preview">
+                            </div>
+                        </div>
+                        
+                        <div class="modern-checkbox">
+                            <input type="checkbox" id="terms" required>
+                            <span class="checkbox-custom"></span>
+                            <label>আমি সকল শর্তাবলী মেনে নিচ্ছি</label>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn-prev" id="prevBtn" onclick="changeStep(-1)" disabled>
+                            <i class="fas fa-arrow-left"></i> পূর্ববর্তী
+                        </button>
+                        <button type="button" class="btn-next" id="nextBtn" onclick="changeStep(1)">
+                            পরবর্তী <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button type="submit" class="btn-submit-modern" id="submitBtn" style="display: none;">
+                            <i class="fas fa-check-circle"></i> রেজিস্ট্রেশন সম্পন্ন করুন
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- রক্তের রিকোয়েস্ট ফর্ম -->
+        <section id="request" class="modern-form-section">
+            <div class="modern-form-container">
+                <div class="form-header" style="background: linear-gradient(135deg, #E74C3C, #C0392B);">
+                    <h2><i class="fas fa-exclamation-triangle"></i> জরুরি রক্তের প্রয়োজন</h2>
+                    <p>২৪/৭ জরুরি সেবা - দ্রুত রক্তের প্রয়োজন হলে এখনই জানান</p>
+                </div>
+                
+                <form id="bloodRequestForm" class="modern-form">
+                    <div class="modern-input-group">
+                        <i class="fas fa-user-injured"></i>
+                        <input type="text" id="patientName" required placeholder=" ">
+                        <label class="floating-label">রোগীর নাম</label>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="modern-input-group">
+                            <i class="fas fa-tint"></i>
+                            <select id="requiredBloodGroup" required>
+                                <option value=""></option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                            <label class="floating-label">প্রয়োজনীয় ব্লাড গ্রুপ</label>
+                        </div>
+                        
+                        <div class="modern-input-group">
+                            <i class="fas fa-flask"></i>
+                            <input type="number" id="units" min="1" max="10" required placeholder=" ">
+                            <label class="floating-label">প্রয়োজনীয় ইউনিট (১-১০)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="modern-input-group">
+                        <i class="fas fa-hospital"></i>
+                        <textarea id="hospital" rows="2" required placeholder=" "></textarea>
+                        <label class="floating-label">হাসপাতালের নাম ও ঠিকানা</label>
+                    </div>
+                    
+                    <div class="modern-input-group">
+                        <i class="fas fa-phone-alt"></i>
+                        <input type="tel" id="contactPhone" required placeholder=" ">
+                        <label class="floating-label">যোগাযোগের নম্বর</label>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="modern-input-group">
+                            <i class="fas fa-calendar"></i>
+                            <input type="date" id="needDate" required placeholder=" ">
+                            <label class="floating-label">প্রয়োজনীয় তারিখ</label>
+                        </div>
+                        
+                        <div class="modern-input-group">
+                            <i class="fas fa-clock"></i>
+                            <input type="time" id="needTime" required placeholder=" ">
+                            <label class="floating-label">প্রয়োজনীয় সময়</label>
+                        </div>
+                    </div>
+                    
+                    <div class="modern-input-group">
+                        <i class="fas fa-sticky-note"></i>
+                        <textarea id="additionalNotes" rows="2" placeholder=" "></textarea>
+                        <label class="floating-label">অতিরিক্ত নোট (ঐচ্ছিক)</label>
+                    </div>
+                    
+                    <div class="modern-checkbox">
+                        <input type="checkbox" id="emergencyTerms" required>
+                        <span class="checkbox-custom"></span>
+                        <label>আমি নিশ্চিত করছি যে এটি একটি জরুরি প্রয়োজন</label>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit-modern emergency-submit">
+                        <i class="fas fa-paper-plane"></i> জরুরি রিকোয়েস্ট পাঠান
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ব্লাড ক্যাম্পেইন সেকশন -->
+        <section id="campaign" class="campaigns">
+            <h2 class="section-title">আসন্ন ব্লাড ক্যাম্পেইন</h2>
+            <div class="campaign-container" id="campaignList"></div>
+        </section>
+
+        <!-- ফুটার -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-hand-holding-drop"></i> রক্তবন্ধু</h3>
+                    <p>জীবন বাঁচাতে আমাদের এই ছোট্ট প্রচেষ্টা। রক্ত দিন, বাঁচান জীবন। আপনার এক ফোঁটা রক্ত কারো পুরো জীবন বাঁচাতে পারে।</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>কুইক লিংক</h4>
+                    <ul>
+                        <li><a href="#home">হোম</a></li>
+                        <li><a href="#register">ডোনার হন</a></li>
+                        <li><a href="#team">আমাদের টিম</a></li>
+                        <li><a href="#gallery">গ্যালারি</a></li>
+                        <li><a href="#campaign">ক্যাম্পেইন</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>গুরুত্বপূর্ণ লিংক</h4>
+                    <ul>
+                        <li><a href="#">প্রাইভেসি পলিসি</a></li>
+                        <li><a href="#">টার্মস অ্যান্ড কন্ডিশন</a></li>
+                        <li><a href="#">ব্লাড গ্রুপ চার্ট</a></li>
+                        <li><a href="#">স্বাস্থ্য টিপস</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>যোগাযোগ</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +880 1234-567890</li>
+                        <li><i class="fas fa-envelope"></i> info@roktobandhu.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024-2026 নি:স্বার্থ ব্লাড ব্যাংক ফাউন্ডেশন - সমস্ত অধিকার সংরক্ষিত | ডিজাইন ও ডেভেলপমেন্ট</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- এডমিন প্যানেল -->
+    <div class="admin-panel-container" id="adminPanel">
+        <div class="admin-login-box" id="adminLoginForm">
+            <h2><i class="fas fa-lock"></i> এডমিন লগইন</h2>
+            <div class="input-group">
+                <input type="text" id="adminUsername" placeholder="ইউজারনেম">
+            </div>
+            <div class="input-group">
+                <input type="password" id="adminPassword" placeholder="পাসওয়ার্ড">
+            </div>
+            <button onclick="adminLogin()"><i class="fas fa-sign-in-alt"></i> লগইন করুন</button>
+            <button class="back-btn" onclick="hideAdminPanel()"><i class="fas fa-arrow-left"></i> ব্যাক টু হোম</button>
+            <p style="text-align: center; margin-top: 15px; color: #7f8c8d;">ইউজারনেম: admin | পাসওয়ার্ড: blood123</p>
+        </div>
+
+        <div class="admin-dashboard" id="adminDashboard">
+            <div class="admin-header">
+                <h1><i class="fas fa-hand-holding-drop"></i> রক্তবন্ধু - এডমিন প্যানেল</h1>
+                <button class="btn-primary" onclick="goToSite()" style="margin-right: 10px; background: #3498db;">
+                <i class="fas fa-globe"></i> সাইটে যান
+                </button>
+                <button class="logout-btn" onclick="adminLogout()"><i class="fas fa-sign-out-alt"></i> লগআউট</button>
+            </div>
+
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <i class="fas fa-users"></i>
+                    <h3 id="adminTotalDonors">1247</h3>
+                    <p>মোট ডোনার</p>
+                </div>
+                <div class="admin-stat-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3 id="adminPendingRequests">5</h3>
+                    <p>অপেক্ষমান রিকোয়েস্ট</p>
+                </div>
+                <div class="admin-stat-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3 id="adminTotalCampaigns">2</h3>
+                    <p>মোট ক্যাম্পেইন</p>
+                </div>
+                <div class="admin-stat-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3 id="adminCompletedDonations">892</h3>
+                    <p>সম্পন্ন রক্তদান</p>
+                </div>
+                <div class="admin-stat-card">
+                    <i class="fas fa-tasks"></i>
+                    <h3 id="adminActiveDonations">12</h3>
+                    <p>সক্রিয় ডোনেশন</p>
+                </div>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="showAdminTab('donors')">ডোনার লিস্ট</button>
+                <button class="admin-tab" onclick="showAdminTab('requests')">রক্তের রিকোয়েস্ট</button>
+                <button class="admin-tab" onclick="showAdminTab('donation')">ব্লাড ডোনেশন</button>
+                <button class="admin-tab" onclick="showAdminTab('campaigns')">ক্যাম্পেইন</button>
+                <button class="admin-tab" onclick="showAdminTab('history')">ডোনেশন ইতিহাস</button>
+                <button class="admin-tab" onclick="showAdminTab('customize')">কাস্টমাইজেশন</button>
+            </div>
+
+            <!-- ডোনার লিস্ট ট্যাব -->
+            <div id="adminDonorsTab" class="admin-table-container">
+                <h3><i class="fas fa-users"></i> নিবন্ধিত ডোনার</h3>
+                <div style="margin-bottom: 20px;">
+                    <input type="text" id="donorFilter" placeholder="ব্লাড গ্রুপ বা জেলা অনুযায়ী ফিল্টার..." style="padding: 10px; width: 300px; border: 2px solid #eee; border-radius: 10px;">
+                </div>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ছবি</th>
+                            <th>নাম</th>
+                            <th>ফোন</th>
+                            <th>ব্লাড গ্রুপ</th>
+                            <th>জেলা</th>
+                            <th>স্ট্যাটাস</th>
+                            <th>অ্যাকশন</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminDonorsTable"></tbody>
+                </table>
+            </div>
+
+            <!-- রক্তের রিকোয়েস্ট ট্যাব -->
+            <div id="adminRequestsTab" class="admin-table-container" style="display: none;">
+                <h3><i class="fas fa-exclamation-triangle"></i> নতুন রক্তের রিকোয়েস্ট</h3>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>আইডি</th>
+                            <th>রোগীর নাম</th>
+                            <th>ছবি</th>
+                            <th>ব্লাড গ্রুপ</th>
+                            <th>ইউনিট</th>
+                            <th>হাসপাতাল</th>
+                            <th>যোগাযোগ</th>
+                            <th>প্রয়োজনীয় তারিখ</th>
+                            <th>স্ট্যাটাস</th>
+                            <th>অ্যাকশন</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminRequestsTable"></tbody>
+                </table>
+            </div>
+
+            <!-- ব্লাড ডোনেশন ম্যানেজমেন্ট ট্যাব (নতুন) -->
+            <div id="adminDonationTab" class="admin-table-container" style="display: none;">
+                <h3><i class="fas fa-tasks"></i> ব্লাড ডোনেশন ম্যানেজমেন্ট</h3>
+                <div id="donationManagementContainer"></div>
+            </div>
+
+            <!-- ক্যাম্পেইন ট্যাব -->
+            <div id="adminCampaignsTab" class="admin-table-container" style="display: none;">
+                <h3><i class="fas fa-calendar-alt"></i> ব্লাড ক্যাম্পেইন</h3>
+                <button class="btn-primary" onclick="showAddCampaignForm()" style="margin-bottom: 20px;">
+                    <i class="fas fa-plus"></i> নতুন ক্যাম্পেইন যোগ করুন
+                </button>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>আইডি</th>
+                            <th>শিরোনাম</th>
+                            <th>তারিখ</th>
+                            <th>স্থান</th>
+                            <th>আয়োজক</th>
+                            <th>অ্যাকশন</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminCampaignsTable"></tbody>
+                </table>
+            </div>
+
+            <!-- ডোনেশন ইতিহাস ট্যাব -->
+            <div id="adminHistoryTab" class="admin-table-container" style="display: none;">
+                <h3><i class="fas fa-history"></i> রক্তদানের ইতিহাস</h3>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>আইডি</th>
+                            <th>রোগীর নাম</th>
+                            <th>ডোনারের নাম</th>
+                            <th>ব্লাড গ্রুপ</th>
+                            <th>হাসপাতাল</th>
+                            <th>প্রয়োজনীয় তারিখ</th>
+                            <th>দানের তারিখ</th>
+                            <th>স্ট্যাটাস</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminHistoryTable"></tbody>
+                </table>
+            </div>
+
+            <!-- কাস্টমাইজেশন ট্যাব -->
+            <div id="adminCustomizeTab" class="admin-table-container" style="display: none;">
+                <h3><i class="fas fa-paint-brush"></i> ওয়েবসাইট কাস্টমাইজেশন</h3>
+                
+                <div class="customization-section">
+                    <h4><i class="fas fa-users"></i> টিম সেকশন কাস্টমাইজেশন</h4>
+                    <div class="customization-controls">
+                        <div class="customization-control">
+                            <label>সেকশন টাইটেল</label>
+                            <input type="text" id="teamTitleInput" value="আমাদের টিম" onchange="updateTeamSection()">
+                        </div>
+                        <div class="customization-control">
+                            <label>প্রতি স্লাইডে মেম্বার সংখ্যা</label>
+                            <select id="teamPerPageSelect" onchange="updateTeamPerPage()">
+                                <option value="2">২ জন</option>
+                                <option value="3" selected>৩ জন</option>
+                                <option value="4">৪ জন</option>
+                            </select>
+                        </div>
+                        <div class="customization-control">
+                            <label>অটো স্লাইড স্পিড (সেকেন্ড)</label>
+                            <input type="number" id="teamAutoSlideSpeed" value="3" min="1" max="10" onchange="updateTeamAutoSlide()">
+                        </div>
+                    </div>
+                    <div class="customization-control">
+                        <label>নতুন টিম মেম্বার যোগ করুন</label>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <input type="text" id="newMemberName" placeholder="নাম" style="flex: 1;">
+                            <input type="text" id="newMemberPosition" placeholder="পজিশন" style="flex: 1;">
+                            <div class="image-upload-container" style="flex: 2;" onclick="document.getElementById('teamImageInput').click()">
+                                <input type="file" id="teamImageInput" class="image-upload-input" accept="image/*" onchange="previewImage(this, 'teamImagePreview')">
+                                <span>ছবি সিলেক্ট করুন</span>
+                                <img id="teamImagePreview" class="image-preview" src="#" alt="Preview" style="max-width: 50px; max-height: 50px;">
+                            </div>
+                            <button class="btn-approve" onclick="addTeamMember()">যোগ করুন</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="customization-section">
+                    <h4><i class="fas fa-star"></i> রিভিউ সেকশন কাস্টমাইজেশন</h4>
+                    <div class="customization-controls">
+                        <div class="customization-control">
+                            <label>সেকশন টাইটেল</label>
+                            <input type="text" id="reviewTitleInput" value="ডোনারদের মতামত" onchange="updateReviewSection()">
+                        </div>
+                        <div class="customization-control">
+                            <label>প্রতি স্লাইডে রিভিউ সংখ্যা</label>
+                            <select id="reviewsPerPageSelect" onchange="updateReviewsPerPage()">
+                                <option value="2">২ টি</option>
+                                <option value="3" selected>৩ টি</option>
+                                <option value="4">৪ টি</option>
+                            </select>
+                        </div>
+                        <div class="customization-control">
+                            <label>অটো স্লাইড স্পিড (সেকেন্ড)</label>
+                            <input type="number" id="reviewAutoSlideSpeed" value="4" min="1" max="10" onchange="updateReviewAutoSlide()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="customization-section">
+                    <h4><i class="fas fa-images"></i> গ্যালারি সেকশন কাস্টমাইজেশন</h4>
+                    <div class="customization-controls">
+                        <div class="customization-control">
+                            <label>সেকশন টাইটেল</label>
+                            <input type="text" id="galleryTitleInput" value="আমাদের কার্যক্রম" onchange="updateGallerySection()">
+                        </div>
+                        <div class="customization-control">
+                            <label>প্রতি লোডে ছবি সংখ্যা</label>
+                            <select id="imagesPerLoadSelect" onchange="updateImagesPerLoad()">
+                                <option value="4">৪ টি</option>
+                                <option value="6" selected>৬ টি</option>
+                                <option value="8">৮ টি</option>
+                                <option value="12">১২ টি</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="customization-control">
+                        <label>নতুন ছবি যোগ করুন</label>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; margin-top: 10px;">
+                            <div class="image-upload-container" onclick="document.getElementById('galleryImageInput').click()">
+                                <input type="file" id="galleryImageInput" class="image-upload-input" accept="image/*" onchange="previewImage(this, 'galleryImagePreview')">
+                                <span>ছবি সিলেক্ট করুন</span>
+                                <img id="galleryImagePreview" class="image-preview" src="#" alt="Preview">
+                            </div>
+                            <input type="text" id="newImageTitle" placeholder="শিরোনাম">
+                            <select id="newImageCategory">
+                                <option value="camp">রক্তদান ক্যাম্প</option>
+                                <option value="training">প্রশিক্ষণ</option>
+                                <option value="awareness">সচেতনতা</option>
+                                <option value="community">কমিউনিটি মিট</option>
+                            </select>
+                            <button class="btn-approve" onclick="addGalleryImage()">যোগ করুন</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- রিভিউ দেওয়ার মডাল (ইমেজ আপলোড সহ) -->
+    <div class="review-modal" id="reviewModal">
+        <div class="review-modal-content">
+            <span class="review-modal-close" onclick="hideReviewForm()">&times;</span>
+            <h3><i class="fas fa-heart" style="color: var(--primary-color);"></i> আপনার মতামত দিন</h3>
+            
+            <form id="reviewForm" onsubmit="submitReview(event)">
+                <div class="review-form-group">
+                    <label>আপনার নাম</label>
+                    <input type="text" id="reviewerName" required placeholder="আপনার নাম লিখুন">
+                </div>
+                
+                <div class="review-form-group">
+                    <label>রক্তের গ্রুপ</label>
+                    <select id="reviewerBloodGroup" required>
+                        <option value="">সিলেক্ট করুন</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                </div>
+                
+                <div class="review-form-group">
+                    <label>রেটিং দিন</label>
+                    <div class="star-rating">
+                        <i class="far fa-star" onclick="setRating(1)" id="star1"></i>
+                        <i class="far fa-star" onclick="setRating(2)" id="star2"></i>
+                        <i class="far fa-star" onclick="setRating(3)" id="star3"></i>
+                        <i class="far fa-star" onclick="setRating(4)" id="star4"></i>
+                        <i class="far fa-star" onclick="setRating(5)" id="star5"></i>
+                    </div>
+                    <input type="hidden" id="reviewRating" value="0">
+                </div>
+                
+                <div class="review-form-group">
+                    <label>আপনার মতামত</label>
+                    <textarea id="reviewText" rows="4" required placeholder="আপনার অভিজ্ঞতা সম্পর্কে লিখুন..."></textarea>
+                </div>
+                
+                <!-- ইমেজ আপলোড (নতুন ফিচার) -->
+                <div class="review-form-group">
+                    <label>আপনার ছবি (ঐচ্ছিক)</label>
+                    <div class="image-upload-container" onclick="document.getElementById('reviewerImageInput').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>ছবি আপলোড করতে ক্লিক করুন</p>
+                        <input type="file" id="reviewerImageInput" class="image-upload-input" accept="image/*" onchange="previewImage(this, 'reviewerImagePreview')">
+                        <img id="reviewerImagePreview" class="image-preview" src="#" alt="Preview">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-submit-review">
+                    <i class="fas fa-paper-plane"></i> মতামত জমা দিন
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ক্যাম্পেইন অ্যাড মডাল -->
+    <div class="lightbox" id="campaignModal">
+        <div class="lightbox-content" style="max-width: 500px;">
+            <span class="lightbox-close" onclick="hideCampaignModal()"><i class="fas fa-times"></i></span>
+            <div style="background: white; padding: 30px; border-radius: 20px;">
+                <h3 style="text-align: center; margin-bottom: 20px;">নতুন ক্যাম্পেইন যোগ করুন</h3>
+                <form onsubmit="addCampaign(event)">
+                    <div class="modern-input-group" style="margin-bottom: 15px;">
+                        <input type="text" id="campaignTitle" required placeholder=" ">
+                        <label class="floating-label">ক্যাম্পেইনের শিরোনাম</label>
+                    </div>
+                    <div class="modern-input-group" style="margin-bottom: 15px;">
+                        <input type="date" id="campaignDate" required placeholder=" ">
+                        <label class="floating-label">তারিখ</label>
+                    </div>
+                    <div class="modern-input-group" style="margin-bottom: 15px;">
+                        <input type="text" id="campaignLocation" required placeholder=" ">
+                        <label class="floating-label">স্থান</label>
+                    </div>
+                    <div class="modern-input-group" style="margin-bottom: 15px;">
+                        <input type="text" id="campaignOrganizer" required placeholder=" ">
+                        <label class="floating-label">আয়োজক</label>
+                    </div>
+                    <div class="modern-input-group" style="margin-bottom: 15px;">
+                        <textarea id="campaignDetails" rows="3" placeholder=" "></textarea>
+                        <label class="floating-label">বিস্তারিত</label>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">সেভ করুন</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- লাইটবক্স -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></span>
+        <button class="lightbox-nav prev" onclick="changeImage(-1)"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+        <button class="lightbox-nav next" onclick="changeImage(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- টোস্ট নোটিফিকেশন -->
+    <div class="toast-notification" id="toastNotification">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">আপনার মতামত জমা দেওয়া হয়েছে</span>
+    </div>
+
+    <!-- ব্যাক টু টপ বাটন -->
+    <button id="backToTop" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- রিভিউ সেকশনের জন্য সিএসএস -->
+    <style>
+        .reviews-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9e9e9 100%);
+        }
+        .reviews-container { max-width: 1200px; margin: 0 auto; }
+        .reviews-carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .reviews-carousel { flex: 1; overflow: hidden; padding: 1rem 0; }
+        .reviews-wrapper { display: flex; gap: 2rem; transition: transform 0.5s ease; }
+        .review-card {
+            flex: 0 0 calc(33.333% - 1.33rem);
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .review-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(211,47,47,0.15); }
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 120px;
+            color: rgba(211,47,47,0.1);
+            font-family: serif;
+        }
+        .review-header { display: flex; gap: 1rem; margin-bottom: 1.5rem; position: relative; z-index: 2; }
+        .reviewer-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .reviewer-info h4 { font-size: 1.2rem; margin-bottom: 0.3rem; color: var(--text-dark); }
+        .reviewer-blood-group {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .review-rating { margin-bottom: 1rem; position: relative; z-index: 2; }
+        .review-rating i { color: #FFD700; margin-right: 2px; font-size: 1rem; }
+        .review-text {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+        .review-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 2px dashed #eee;
+        }
+        .review-date { color: var(--text-light); font-size: 0.8rem; }
+        .review-date i { color: var(--primary-color); margin-right: 0.3rem; }
+        .review-like {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .review-like:hover { color: var(--primary-color); }
+        .review-like.liked { color: var(--primary-color); animation: heartBeat 0.3s ease; }
+        @keyframes heartBeat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .review-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+        .review-arrow:hover { background: var(--primary-color); color: white; transform: scale(1.1); }
+        .review-arrow:active { transform: scale(0.95); }
+        .review-arrow i { font-size: 1.2rem; }
+        .review-dots {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .review-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(211,47,47,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .review-dot:hover { background: rgba(211,47,47,0.5); }
+        .review-dot.active { background: var(--primary-color); transform: scale(1.2); }
+        .review-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 4000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        .review-modal-content {
+            background: white;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 30px;
+            padding: 2rem;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .review-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+        .review-modal-close:hover { color: var(--primary-color); transform: scale(1.1); }
+        .review-modal h3 { text-align: center; margin-bottom: 2rem; color: var(--text-dark); font-size: 1.8rem; }
+        .review-form-group { margin-bottom: 1.5rem; }
+        .review-form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 500; }
+        .review-form-group input, .review-form-group select, .review-form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .review-form-group input:focus, .review-form-group select:focus, .review-form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(211,47,47,0.1);
+        }
+        .star-rating { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+        .star-rating i { font-size: 2rem; color: #FFD700; cursor: pointer; transition: all 0.2s ease; }
+        .star-rating i:hover { transform: scale(1.2); }
+        .btn-submit-review {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-submit-review:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(211,47,47,0.3); }
+        @media (max-width: 1024px) { .review-card { flex: 0 0 calc(50% - 1rem); } }
+        @media (max-width: 768px) { .review-card { flex: 0 0 100%; } .review-arrow { width: 40px; height: 40px; } .review-arrow i { font-size: 1rem; } }
+        @media (max-width: 480px) { .reviews-carousel-container { gap: 0.5rem; } .review-arrow { width: 35px; height: 35px; } .reviewer-image { width: 60px; height: 60px; } }
+    </style>
+
+  <!-- শুধু JavaScript অংশ প্রতিস্থাপন করুন - নিচের কোডটি আপনার existing script ট্যাগের মধ্যে বসান -->
+
+<!-- শুধু JavaScript অংশ প্রতিস্থাপন করুন - নিচের কোডটি আপনার existing script ট্যাগের মধ্যে বসান -->
+<script>
+    // গ্লোবাল ভেরিয়েবল
+    let donors = JSON.parse(localStorage.getItem('donors')) || [];
+    let bloodRequests = JSON.parse(localStorage.getItem('bloodRequests')) || [];
+    let donations = JSON.parse(localStorage.getItem('donations')) || [];
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    let teamMembers = JSON.parse(localStorage.getItem('teamMembers')) || [];
+    let galleryImages = JSON.parse(localStorage.getItem('galleryImages')) || [];
+    let campaigns = JSON.parse(localStorage.getItem('campaigns')) || [
+        { id: 1, title: "ঢাকা বিশ্ববিদ্যালয় ব্লাড ক্যাম্পেইন", date: "2024-03-15", location: "ঢাকা বিশ্ববিদ্যালয় কেন্দ্রীয় মাঠ", organizer: "ঢাকা মেডিকেল কলেজ", details: "সকাল ৯টা থেকে বিকাল ৫টা পর্যন্ত" },
+        { id: 2, title: "চট্টগ্রাম ব্লাড ডোনেশন ক্যাম্প", date: "2024-03-20", location: "চট্টগ্রাম মেডিকেল কলেজ", organizer: "চট্টগ্রাম রক্তদান সংস্থা", details: "সকাল ১০টা থেকে বিকাল ৪টা পর্যন্ত" }
+    ];
+    
+    // কাস্টমাইজেশন সেটিংস
+    let customizationSettings = JSON.parse(localStorage.getItem('customizationSettings')) || {
+        teamTitle: 'আমাদের টিম',
+        teamPerPage: 3,
+        teamAutoSlideSpeed: 3,
+        reviewTitle: 'ডোনারদের মতামত',
+        reviewsPerPage: 3,
+        reviewAutoSlideSpeed: 4,
+        galleryTitle: 'আমাদের কার্যক্রম',
+        imagesPerLoad: 6
+    };
+
+    // ক্যারোসেল ভেরিয়েবল
+    let currentTeamIndex = 0;
+    let currentReviewIndex = 0;
+    let currentGalleryCategory = 'all';
+    let currentGalleryIndex = 0;
+    let teamInterval, reviewInterval;
+    let currentRating = 0;
+    let currentStep = 1;
+    let currentImageIndex = 0;
+    let currentGalleryImages = [];
+
+    // এডমিন লগইন স্টেট - localStorage থেকে লোড করুন
+    let isAdminLoggedIn = localStorage.getItem('adminLoggedIn') === 'true';
+
+    // ইমেজ প্রিভিউ ফাংশন
+    function previewImage(input, previewId) {
+        const preview = document.getElementById(previewId);
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // টোস্ট দেখান
+    function showToast(message) {
+        const toast = document.getElementById('toastNotification');
+        if (!toast) return;
+        document.getElementById('toastMessage').innerText = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // ডিফল্ট ডাটা লোড
+    function loadDefaultData() {
+        if (teamMembers.length === 0) {
+            teamMembers = [
+                { id: 1, name: "ডা. রফিকুল ইসলাম", position: "প্রতিষ্ঠাতা ও প্রধান উপদেষ্টা", experience: "৩০+ বছর", specialization: ["হেমাটোলজি", "মেডিসিন"], image: "https://randomuser.me/api/portraits/men/1.jpg", bio: "৩০ বছরেরও বেশি অভিজ্ঞতা সম্পন্ন চিকিৎসক। রক্তদান আন্দোলনের পুরোধা ব্যক্তিত্ব।" },
+                { id: 2, name: "মিসেস ফাতেমা আক্তার", position: "প্রোগ্রাম কো-অর্ডিনেটর", experience: "১৫+ বছর", specialization: ["কমিউনিটি মবিলাইজেশন", "ইভেন্ট ম্যানেজমেন্ট"], image: "https://randomuser.me/api/portraits/women/2.jpg", bio: "সমাজকর্মী ও রক্তদান আন্দোলনের সংগঠক। ৫০০+ রক্তদান ক্যাম্পের আয়োজক।" },
+                { id: 3, name: "মোঃ সাব্বির হোসেন", position: "টেকনিক্যাল হেড", experience: "১০+ বছর", specialization: ["সফটওয়্যার ডেভেলপমেন্ট", "ডাটাবেস ম্যানেজমেন্ট"], image: "https://randomuser.me/api/portraits/men/3.jpg", bio: "সফটওয়্যার ইঞ্জিনিয়ার ও স্বেচ্ছাসেবক। ব্লাড ব্যাংক ম্যানেজমেন্ট সিস্টেম বিশেষজ্ঞ।" },
+                { id: 4, name: "নাজমা বেগম", position: "কমিউনিটি ম্যানেজার", experience: "৮+ বছর", specialization: ["সোশ্যাল মিডিয়া", "কমিউনিটি বিল্ডিং"], image: "https://randomuser.me/api/portraits/women/4.jpg", bio: "সোশ্যাল মিডিয়া বিশেষজ্ঞ। ১০,০০০+ ডোনারের সাথে সংযোগ স্থাপন করেছেন।" }
+            ];
+            localStorage.setItem('teamMembers', JSON.stringify(teamMembers));
+        }
+
+        if (reviews.length === 0) {
+            reviews = [
+                { id: 1, name: "রহিম মিয়া", bloodGroup: "A+", rating: 5, text: "অত্যন্ত পেশাদার এবং দ্রুত সেবা।", image: "https://randomuser.me/api/portraits/men/11.jpg", date: "১৫ ফেব্রুয়ারি, ২০২৪", donations: 12, likes: 0 },
+                { id: 2, name: "ফাতেমা আক্তার", bloodGroup: "O+", rating: 5, text: "মাত্র ১০ মিনিটের মধ্যে তারা ডোনার খুঁজে দিয়েছিল।", image: "https://randomuser.me/api/portraits/women/11.jpg", date: "১০ ফেব্রুয়ারি, ২০২৪", donations: 8, likes: 0 },
+                { id: 3, name: "করিম হোসেন", bloodGroup: "B+", rating: 5, text: "রক্তদান আন্দোলনে যুক্ত হতে পেরে আমি গর্বিত।", image: "https://randomuser.me/api/portraits/men/12.jpg", date: "৫ ফেব্রুয়ারি, ২০২৪", donations: 15, likes: 0 }
+            ];
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+        }
+
+        if (galleryImages.length === 0) {
+            galleryImages = [
+                { id: 1, src: 'https://images.unsplash.com/photo-1615461066841-6116e61058f4?w=400', category: 'camp', title: 'ব্লাড ডোনেশন ক্যাম্প - ঢাকা', date: '১৫ ফেব্রুয়ারি, ২০২৪', likes: 234, comments: 45 },
+                { id: 2, src: 'https://images.unsplash.com/photo-1581595219315-a187d403c79d?w=400', category: 'camp', title: 'চট্টগ্রাম ব্লাড ক্যাম্প', date: '১০ ফেব্রুয়ারি, ২০২৪', likes: 189, comments: 32 },
+                { id: 3, src: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400', category: 'training', title: 'স্বেচ্ছাসেবক ট্রেনিং প্রোগ্রাম', date: '৫ ফেব্রুয়ারি, ২০২৪', likes: 156, comments: 28 }
+            ];
+            localStorage.setItem('galleryImages', JSON.stringify(galleryImages));
+        }
+    }
+
+    // পৃষ্ঠা লোড হওয়ার সময়
+    document.addEventListener('DOMContentLoaded', function() {
+        loadDefaultData();
+        applyCustomization();
+        loadTeamMembers();
+        createTeamDots();
+        startTeamAutoSlide();
+        loadReviews();
+        createReviewDots();
+        startReviewAutoSlide();
+        loadGalleryImages('all');
+        loadEmergencyRequests();
+        loadCampaigns();
+        loadDonorCards();
+        updateStats();
+        
+        // এডমিন লগইন স্টেট চেক
+        if (isAdminLoggedIn) {
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            document.getElementById('adminLoginForm').style.display = 'none';
+            document.getElementById('adminDashboard').style.display = 'block';
+            loadAdminData();
+        }
+    });
+
+    // কাস্টমাইজেশন প্রয়োগ
+    function applyCustomization() {
+        const teamSectionTitle = document.getElementById('teamSectionTitle');
+        const reviewSectionTitle = document.getElementById('reviewSectionTitle');
+        const gallerySectionTitle = document.getElementById('gallerySectionTitle');
+        
+        if (teamSectionTitle) teamSectionTitle.innerText = customizationSettings.teamTitle;
+        if (reviewSectionTitle) reviewSectionTitle.innerText = customizationSettings.reviewTitle;
+        if (gallerySectionTitle) gallerySectionTitle.innerText = customizationSettings.galleryTitle;
+        
+        const teamTitleInput = document.getElementById('teamTitleInput');
+        const teamPerPageSelect = document.getElementById('teamPerPageSelect');
+        const teamAutoSlideSpeed = document.getElementById('teamAutoSlideSpeed');
+        const reviewTitleInput = document.getElementById('reviewTitleInput');
+        const reviewsPerPageSelect = document.getElementById('reviewsPerPageSelect');
+        const reviewAutoSlideSpeed = document.getElementById('reviewAutoSlideSpeed');
+        const galleryTitleInput = document.getElementById('galleryTitleInput');
+        const imagesPerLoadSelect = document.getElementById('imagesPerLoadSelect');
+        
+        if (teamTitleInput) teamTitleInput.value = customizationSettings.teamTitle;
+        if (teamPerPageSelect) teamPerPageSelect.value = customizationSettings.teamPerPage;
+        if (teamAutoSlideSpeed) teamAutoSlideSpeed.value = customizationSettings.teamAutoSlideSpeed;
+        if (reviewTitleInput) reviewTitleInput.value = customizationSettings.reviewTitle;
+        if (reviewsPerPageSelect) reviewsPerPageSelect.value = customizationSettings.reviewsPerPage;
+        if (reviewAutoSlideSpeed) reviewAutoSlideSpeed.value = customizationSettings.reviewAutoSlideSpeed;
+        if (galleryTitleInput) galleryTitleInput.value = customizationSettings.galleryTitle;
+        if (imagesPerLoadSelect) imagesPerLoadSelect.value = customizationSettings.imagesPerLoad;
+    }
+
+    // টিম সেকশন ফাংশন
+    function updateTeamSection() {
+        customizationSettings.teamTitle = document.getElementById('teamTitleInput').value;
+        document.getElementById('teamSectionTitle').innerText = customizationSettings.teamTitle;
+        localStorage.setItem('customizationSettings', JSON.stringify(customizationSettings));
+        showToast('টিম সেকশন আপডেট করা হয়েছে');
+    }
+
+    function updateTeamPerPage() {
+        customizationSettings.teamPerPage = parseInt(document.getElementById('teamPerPageSelect').value);
+        localStorage.setItem('customizationSettings', JSON.stringify(customizationSettings));
+        loadTeamMembers();
+        createTeamDots();
+        showToast('প্রতি পৃষ্ঠায় টিম মেম্বার সংখ্যা আপডেট করা হয়েছে');
+    }
+
+    function updateTeamAutoSlide() {
+        customizationSettings.teamAutoSlideSpeed = parseInt(document.getElementById('teamAutoSlideSpeed').value);
+        localStorage.setItem('customizationSettings', JSON.stringify(customizationSettings));
+        resetTeamAutoSlide();
+        showToast('অটো স্লাইড স্পিড আপডেট করা হয়েছে');
+    }
+
+    function addTeamMember() {
+        const name = document.getElementById('newMemberName').value;
+        const position = document.getElementById('newMemberPosition').value;
+        const imageInput = document.getElementById('teamImageInput');
+        
+        if (!name || !position) {
+            alert('নাম এবং পজিশন অবশ্যই দিতে হবে');
+            return;
+        }
+
+        if (imageInput.files && imageInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const newMember = {
+                    id: Date.now(),
+                    name: name,
+                    position: position,
+                    experience: "নতুন",
+                    specialization: ["সদস্য"],
+                    image: e.target.result,
+                    bio: "নতুন সদস্য"
+                };
+
+                teamMembers.push(newMember);
+                localStorage.setItem('teamMembers', JSON.stringify(teamMembers));
+                
+                document.getElementById('newMemberName').value = '';
+                document.getElementById('newMemberPosition').value = '';
+                document.getElementById('teamImageInput').value = '';
+                document.getElementById('teamImagePreview').style.display = 'none';
+                
+                loadTeamMembers();
+                createTeamDots();
+                showToast('নতুন টিম মেম্বার যোগ করা হয়েছে');
+            }
+            reader.readAsDataURL(imageInput.files[0]);
+        } else {
+            alert('অনুগ্রহ করে একটি ছবি সিলেক্ট করুন');
+        }
+    }
+
+    function loadTeamMembers() {
+        const container = document.getElementById('teamMembers');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        const start = currentTeamIndex * customizationSettings.teamPerPage;
+        const end = Math.min(start + customizationSettings.teamPerPage, teamMembers.length);
+        const currentMembers = teamMembers.slice(start, end);
+        
+        currentMembers.forEach(member => {
+            const card = document.createElement('div');
+            card.className = 'team-card';
+            card.innerHTML = `
+                <div class="team-card-inner">
+                    <div class="team-card-front">
+                        <img src="${member.image}" alt="${member.name}">
+                        <div class="front-content">
+                            <h3>${member.name}</h3>
+                            <span class="position">${member.position}</span>
+                        </div>
+                        <span class="experience-badge">${member.experience}</span>
+                    </div>
+                    <div class="team-card-back">
+                        <h3>${member.name}</h3>
+                        <p class="position">${member.position}</p>
+                        <p class="bio">${member.bio}</p>
+                        <div class="specialization-tags">
+                            ${member.specialization.map(spec => `<span>${spec}</span>`).join('')}
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+        
+        updateTeamDots();
+    }
+
+    function createTeamDots() {
+        const dotsContainer = document.getElementById('carouselDots');
+        if (!dotsContainer) return;
+        
+        const totalPages = Math.ceil(teamMembers.length / customizationSettings.teamPerPage);
+        dotsContainer.innerHTML = '';
+        
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('span');
+            dot.className = `dot ${i === 0 ? 'active' : ''}`;
+            dot.onclick = () => goToTeamPage(i);
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateTeamDots() {
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            if (index === currentTeamIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function goToTeamPage(index) {
+        const totalPages = Math.ceil(teamMembers.length / customizationSettings.teamPerPage);
+        if (index >= 0 && index < totalPages) {
+            currentTeamIndex = index;
+            loadTeamMembers();
+            resetTeamAutoSlide();
+        }
+    }
+
+    function slideTeam(direction) {
+        const totalPages = Math.ceil(teamMembers.length / customizationSettings.teamPerPage);
+        currentTeamIndex = (currentTeamIndex + direction + totalPages) % totalPages;
+        loadTeamMembers();
+        resetTeamAutoSlide();
+    }
+
+    function startTeamAutoSlide() {
+        teamInterval = setInterval(() => {
+            slideTeam(1);
+        }, customizationSettings.teamAutoSlideSpeed * 1000);
+    }
+
+    function resetTeamAutoSlide() {
+        clearInterval(teamInterval);
+        startTeamAutoSlide();
+    }
+
+    // রিভিউ সেকশন ফাংশন
+    function updateReviewSection() {
+        customizationSettings.reviewTitle = document.getElementById('reviewTitleInput').value;
+        document.getElementById('reviewSectionTitle').innerText = customizationSettings.reviewTitle;
+        localStorage.setItem('customizationSettings', JSON.stringify(customizationSettings));
+        showToast('রিভিউ সেকশন আপডেট করা হয়েছে');
+    }
+
+    function updateReviewsPerPage() {
+        customizationSettings.reviewsPerPage = parseInt(document.getElementById('reviewsPerPageSelect').value);
+        localStorage.setItem('customizationSettings', JSON.stringify(customizationSettings));
+        loadReviews();
+        createReviewDots();
+        showToast('প্রতি পৃষ্ঠায় রিভিউ সংখ্যা আপডেট করা হয়েছে');
+    }
+
+    function updateReviewAutoSlide() {
+        customizationSettings.reviewAutoSlideSpeed = parseInt(document.getElementById('reviewAutoSlideSpeed').value);
+        localStorage.setItem('customizationSettings', JSON.stringify(customizationSettings));
+        resetReviewAutoSlide();
+        showToast('অটো স্লাইড স্পিড আপডেট করা হয়েছে');
+    }
+
+    function loadReviews() {
+        const wrapper = document.getElementById('reviewsWrapper');
+        if (!wrapper) return;
+        
+        wrapper.innerHTML = '';
+        
+        const start = currentReviewIndex * customizationSettings.reviewsPerPage;
+        const end = Math.min(start + customizationSettings.reviewsPerPage, reviews.length);
+        const currentReviews = reviews.slice(start, end);
+        
+        currentReviews.forEach(review => {
+            const stars = generateStars(review.rating);
+            const card = document.createElement('div');
+            card.className = 'review-card';
+            card.innerHTML = `
+                <div class="review-header">
+                    <img src="${review.image}" alt="${review.name}" class="reviewer-image">
+                    <div class="reviewer-info">
+                        <h4>${review.name}</h4>
+                        <div class="reviewer-blood-group">
+                            <i class="fas fa-tint"></i> ${review.bloodGroup}
+                        </div>
+                    </div>
+                </div>
+                <div class="review-rating">${stars}</div>
+                <p class="review-text">"${review.text}"</p>
+                <div class="review-footer">
+                    <span class="review-date"><i class="fas fa-clock"></i> ${review.date}</span>
+                    <button class="review-like" onclick="likeReview(${review.id})">
+                        <i class="far fa-heart"></i> <span id="likeCount_${review.id}">${review.likes || 0}</span>
+                    </button>
+                </div>
+            `;
+            wrapper.appendChild(card);
+        });
+        
+        updateReviewDots();
+    }
+
+    function generateStars(rating) {
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+            stars += i <= rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+        }
+        return stars;
+    }
+
+    function likeReview(reviewId) {
+        const likeSpan = document.getElementById(`likeCount_${reviewId}`);
+        if (likeSpan) {
+            let count = parseInt(likeSpan.innerText) || 0;
+            count++;
+            likeSpan.innerText = count;
+            likeSpan.parentElement.classList.add('liked');
+            setTimeout(() => likeSpan.parentElement.classList.remove('liked'), 300);
+        }
+    }
+
+    function createReviewDots() {
+        const dotsContainer = document.getElementById('reviewDots');
+        if (!dotsContainer) return;
+        
+        const totalPages = Math.ceil(reviews.length / customizationSettings.reviewsPerPage);
+        dotsContainer.innerHTML = '';
+        
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('span');
+            dot.className = `review-dot ${i === 0 ? 'active' : ''}`;
+            dot.onclick = () => goToReviewPage(i);
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateReviewDots() {
+        const dots = document.querySelectorAll('.review-dot');
+        dots.forEach((dot, index) => {
+            if (index === currentReviewIndex) dot.classList.add('active');
+            else dot.classList.remove('active');
+        });
+    }
+
+    function goToReviewPage(index) {
+        const totalPages = Math.ceil(reviews.length / customizationSettings.reviewsPerPage);
+        if (index >= 0 && index < totalPages) {
+            currentReviewIndex = index;
+            loadReviews();
+            resetReviewAutoSlide();
+        }
+    }
+
+    function slideReview(direction) {
+        const totalPages = Math.ceil(reviews.length / customizationSettings.reviewsPerPage);
+        currentReviewIndex = (currentReviewIndex + direction + totalPages) % totalPages;
+        loadReviews();
+        resetReviewAutoSlide();
+    }
+
+    function startReviewAutoSlide() {
+        reviewInterval = setInterval(() => {
+            slideReview(1);
+        }, customizationSettings.reviewAutoSlideSpeed * 1000);
+    }
+
+    function resetReviewAutoSlide() {
+        clearInterval(reviewInterval);
+        startReviewAutoSlide();
+    }
+
+    // গ্যালারি সেকশন ফাংশন
+    function updateGallerySection() {
+        customizationSettings.galleryTitle = document.getElementById('galleryTitleInput').value;
+        document.getElementById('gallerySectionTitle').innerText = customizationSettings.galleryTitle;
+        localStorage.setItem('customizationSettings', JSON.stringify(customizationSettings));
+        showToast('গ্যালারি সেকশন আপডেট করা হয়েছে');
+    }
+
+    function updateImagesPerLoad() {
+        customizationSettings.imagesPerLoad = parseInt(document.getElementById('imagesPerLoadSelect').value);
+        localStorage.setItem('customizationSettings', JSON.stringify(customizationSettings));
+        currentGalleryIndex = 0;
+        loadGalleryImages(currentGalleryCategory, true);
+        showToast('প্রতি লোডে ছবি সংখ্যা আপডেট করা হয়েছে');
+    }
+
+    function addGalleryImage() {
+        const imageInput = document.getElementById('galleryImageInput');
+        const title = document.getElementById('newImageTitle').value;
+        const category = document.getElementById('newImageCategory').value;
+
+        if (!imageInput.files || !imageInput.files[0]) {
+            alert('অনুগ্রহ করে একটি ছবি সিলেক্ট করুন');
+            return;
+        }
+
+        if (!title) {
+            alert('শিরোনাম অবশ্যই দিতে হবে');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const newImage = {
+                id: Date.now(),
+                src: e.target.result,
+                category: category,
+                title: title,
+                date: new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' }),
+                likes: 0,
+                comments: 0
+            };
+
+            galleryImages.push(newImage);
+            localStorage.setItem('galleryImages', JSON.stringify(galleryImages));
+            
+            document.getElementById('galleryImageInput').value = '';
+            document.getElementById('newImageTitle').value = '';
+            document.getElementById('galleryImagePreview').style.display = 'none';
+            
+            currentGalleryIndex = 0;
+            loadGalleryImages(currentGalleryCategory, true);
+            showToast('নতুন ছবি যোগ করা হয়েছে');
+        }
+        reader.readAsDataURL(imageInput.files[0]);
+    }
+
+    function loadGalleryImages(category, reset = true) {
+        const grid = document.getElementById('galleryGrid');
+        if (!grid) return;
+        
+        let filteredImages = category === 'all' ? galleryImages : galleryImages.filter(img => img.category === category);
+        
+        if (reset) {
+            grid.innerHTML = '';
+            currentGalleryIndex = 0;
+        }
+        
+        const start = currentGalleryIndex;
+        const end = Math.min(start + customizationSettings.imagesPerLoad, filteredImages.length);
+        const imagesToShow = filteredImages.slice(start, end);
+        
+        imagesToShow.forEach(image => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.setAttribute('data-category', image.category);
+            item.onclick = () => openLightbox(image.id);
+            item.innerHTML = `
+                <img src="${image.src}" alt="${image.title}" loading="lazy">
+                <span class="gallery-category">${getCategoryName(image.category)}</span>
+                <div class="gallery-overlay">
+                    <h4>${image.title}</h4>
+                    <p><i class="fas fa-calendar"></i> ${image.date}</p>
+                    <div class="gallery-stats">
+                        <span><i class="fas fa-heart"></i> ${image.likes}</span>
+                        <span><i class="fas fa-comment"></i> ${image.comments}</span>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(item);
+        });
+        
+        currentGalleryIndex = end;
+        updateLoadMoreButton(filteredImages.length);
+    }
+
+    function getCategoryName(category) {
+        const names = { 'camp': 'রক্তদান ক্যাম্প', 'training': 'প্রশিক্ষণ', 'awareness': 'সচেতনতা', 'community': 'কমিউনিটি মিট', 'all': 'সব' };
+        return names[category] || category;
+    }
+
+    function updateLoadMoreButton(totalImages) {
+        const loadMoreBtn = document.getElementById('galleryLoadMoreBtn');
+        const loadMoreText = document.getElementById('galleryLoadMoreText');
+        
+        if (currentGalleryIndex >= totalImages) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'inline-flex';
+            loadMoreText.innerHTML = `আরও দেখুন (${currentGalleryIndex}/${totalImages})`;
+        }
+    }
+
+    function loadMoreGalleryImages() {
+        loadGalleryImages(currentGalleryCategory, false);
+    }
+
+    function filterGallery(category, element) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        element.classList.add('active');
+        currentGalleryCategory = category;
+        currentGalleryIndex = 0;
+        loadGalleryImages(category, true);
+    }
+
+    // লাইটবক্স ফাংশন
+    function openLightbox(imageId) {
+        const image = galleryImages.find(img => img.id === imageId);
+        if (!image) return;
+        
+        currentGalleryImages = currentGalleryCategory === 'all' ? galleryImages : galleryImages.filter(img => img.category === currentGalleryCategory);
+        currentImageIndex = currentGalleryImages.findIndex(img => img.id === imageId);
+        document.getElementById('lightbox').classList.add('active');
+        updateLightboxImage();
+    }
+
+    function updateLightboxImage() {
+        const image = currentGalleryImages[currentImageIndex];
+        document.getElementById('lightbox-img').src = image.src;
+        document.getElementById('lightbox-caption').innerHTML = `<h4>${image.title}</h4><p>${image.date} | <i class="fas fa-heart"></i> ${image.likes} | <i class="fas fa-comment"></i> ${image.comments}</p>`;
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+    }
+
+    function changeImage(direction) {
+        currentImageIndex = (currentImageIndex + direction + currentGalleryImages.length) % currentGalleryImages.length;
+        updateLightboxImage();
+    }
+
+    // ডোনার কার্ড ফাংশন - লাস্ট ডোনেশন ডেট সহ
+    let allDonors = [];
+    let currentDonorIndex = 0;
+    const donorsPerPage = 3;
+
+    function loadDonorCards() {
+        const container = document.getElementById('donorContainer');
+        if (!container) return;
+        
+        allDonors = donors.length > 0 ? donors.filter(d => d.status === 'approved') : generateSampleDonors();
+        
+        // প্রতিটি ডোনারের জন্য লাস্ট ডোনেশন ডেট আপডেট করা
+        allDonors = allDonors.map(donor => {
+            const donorDonations = donations.filter(d => d.donorId === donor.id && d.status === 'completed');
+            if (donorDonations.length > 0) {
+                const lastDonation = donorDonations.sort((a, b) => new Date(b.donationDate) - new Date(a.donationDate))[0];
+                donor.lastDonation = lastDonation.donationDate ? new Date(lastDonation.donationDate).toLocaleDateString('bn-BD', { day: 'numeric', month: 'short', year: 'numeric' }) : 'কখনো দেননি';
+            } else {
+                donor.lastDonation = donor.lastDonation || 'কখনো দেননি';
+            }
+            return donor;
+        });
+        
+        currentDonorIndex = 0;
+        container.innerHTML = '';
+        displayDonors(0, donorsPerPage);
+        updateSeeMoreButton();
+    }
+
+    function generateSampleDonors() {
+        return [
+            { id: 101, name: 'রহিম মিয়া', bloodGroup: 'A+', district: 'ঢাকা', thana: 'মিরপুর', image: 'https://randomuser.me/api/portraits/men/11.jpg', phone: '+880 1712-345678', lastDonation: '১৫ ফেব্রু, ২০২৪', donationCount: 12, status: 'approved' },
+            { id: 102, name: 'করিম হোসেন', bloodGroup: 'B+', district: 'চট্টগ্রাম', thana: 'নগর', image: 'https://randomuser.me/api/portraits/men/12.jpg', phone: '+880 1812-345678', lastDonation: '১০ ফেব্রু, ২০২৪', donationCount: 8, status: 'approved' },
+            { id: 103, name: 'ফাতেমা বেগম', bloodGroup: 'O+', district: 'রাজশাহী', thana: 'বোয়ালিয়া', image: 'https://randomuser.me/api/portraits/women/11.jpg', phone: '+880 1912-345678', lastDonation: '৫ ফেব্রু, ২০২৪', donationCount: 15, status: 'approved' },
+            { id: 104, name: 'নাজমা আক্তার', bloodGroup: 'AB+', district: 'খুলনা', thana: 'সদর', image: 'https://randomuser.me/api/portraits/women/12.jpg', phone: '+880 1612-345678', lastDonation: '২০ ফেব্রু, ২০২৪', donationCount: 7, status: 'approved' },
+            { id: 105, name: 'সুমন খান', bloodGroup: 'O-', district: 'সিলেট', thana: 'মডেল টাউন', image: 'https://randomuser.me/api/portraits/men/13.jpg', phone: '+880 1512-345678', lastDonation: '১২ ফেব্রু, ২০২৪', donationCount: 20, status: 'approved' },
+            { id: 106, name: 'তানিয়া রহমান', bloodGroup: 'A-', district: 'বরিশাল', thana: 'কোতয়ালী', image: 'https://randomuser.me/api/portraits/women/13.jpg', phone: '+880 1312-345678', lastDonation: '৮ ফেব্রু, ২০২৪', donationCount: 5, status: 'approved' }
+        ];
+    }
+
+    function displayDonors(startIndex, count) {
+        const container = document.getElementById('donorContainer');
+        if (!container) return;
+        
+        const endIndex = Math.min(startIndex + count, allDonors.length);
+        const donorsToShow = allDonors.slice(startIndex, endIndex);
+        
+        donorsToShow.forEach(donor => {
+            const donationCount = donor.donationCount || 1;
+            const level = donationCount >= 15 ? 'গোল্ড' : donationCount >= 8 ? 'সিলভার' : 'ব্রোঞ্জ';
+            const levelColor = donationCount >= 15 ? '#FFD700' : donationCount >= 8 ? '#C0C0C0' : '#CD7F32';
+            const lifeSaved = donationCount * 3;
+            const activeMonths = donor.activeMonths || Math.floor(Math.random() * 12) + 1;
+            
+            const card = document.createElement('div');
+            card.className = 'donor-card-new';
+            card.innerHTML = `
+                <div class="donor-header">
+                    <div class="donor-avatar">
+                        <img src="${donor.image}" alt="${donor.name}">
+                        <div class="blood-drop">${donor.bloodGroup}</div>
+                    </div>
+                    <div class="donor-info">
+                        <h3>${donor.name} <i class="fas fa-check-circle verified-badge" title="ভেরিফাইড ডোনার"></i></h3>
+                        <span class="donor-level" style="background: linear-gradient(135deg, ${levelColor}, ${levelColor}DD);">${level} ডোনার</span>
+                    </div>
+                </div>
+                <div class="donor-stats">
+                    <div class="stat"><div class="stat-value">${donationCount}+</div><div class="stat-label">রক্তদান</div></div>
+                    <div class="stat"><div class="stat-value">${lifeSaved}+</div><div class="stat-label">লাইফ সেভড</div></div>
+                    <div class="stat"><div class="stat-value">${activeMonths}</div><div class="stat-label">মাস সক্রিয়</div></div>
+                </div>
+                <div class="donor-details">
+                    <div class="detail-item"><i class="fas fa-map-marker-alt"></i><span>${donor.district}, ${donor.thana}</span></div>
+                </div>
+                <div class="donor-footer">
+                    <div class="last-donation"><i class="fas fa-calendar-check"></i> সর্বশেষ: ${donor.lastDonation}</div>
+                    <button class="btn-contact" onclick="contactDonor('${donor.phone}')">
+                        <i class="fab fa-whatsapp"></i> যোগাযোগ
+                    </button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+        
+        currentDonorIndex = endIndex;
+    }
+
+    function loadMoreDonors() {
+        if (currentDonorIndex < allDonors.length) {
+            displayDonors(currentDonorIndex, donorsPerPage);
+            updateSeeMoreButton();
+        }
+    }
+
+    function updateSeeMoreButton() {
+        const seeMoreBtn = document.getElementById('seeMoreBtn');
+        const seeMoreText = document.getElementById('seeMoreText');
+        
+        if (currentDonorIndex >= allDonors.length) {
+            seeMoreBtn.disabled = true;
+            seeMoreBtn.style.opacity = '0.5';
+            seeMoreBtn.style.cursor = 'not-allowed';
+            seeMoreText.innerHTML = 'আর কোন ডোনার নেই';
+        } else {
+            seeMoreBtn.disabled = false;
+            seeMoreBtn.style.opacity = '1';
+            seeMoreBtn.style.cursor = 'pointer';
+            seeMoreText.innerHTML = `আরও দেখুন (${currentDonorIndex}/${allDonors.length})`;
+        }
+    }
+
+    function contactDonor(phone) {
+        if (phone) {
+            window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}`, '_blank');
+        } else {
+            alert('ডোনারের ফোন নম্বর পাওয়া যায়নি');
+        }
+    }
+
+    // রিভিউ ফর্ম ফাংশন
+    function showReviewForm() {
+        document.getElementById('reviewModal').style.display = 'flex';
+    }
+
+    function hideReviewForm() {
+        document.getElementById('reviewModal').style.display = 'none';
+        resetRating();
+        document.getElementById('reviewForm').reset();
+        document.getElementById('reviewerImagePreview').style.display = 'none';
+    }
+
+    function setRating(rating) {
+        currentRating = rating;
+        document.getElementById('reviewRating').value = rating;
+        for (let i = 1; i <= 5; i++) {
+            const star = document.getElementById(`star${i}`);
+            star.className = i <= rating ? 'fas fa-star' : 'far fa-star';
+        }
+    }
+
+    function resetRating() {
+        currentRating = 0;
+        document.getElementById('reviewRating').value = 0;
+        for (let i = 1; i <= 5; i++) {
+            document.getElementById(`star${i}`).className = 'far fa-star';
+        }
+    }
+
+    function submitReview(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('reviewerName').value;
+        const bloodGroup = document.getElementById('reviewerBloodGroup').value;
+        const text = document.getElementById('reviewText').value;
+        const imageInput = document.getElementById('reviewerImageInput');
+        
+        if (currentRating === 0) {
+            alert('অনুগ্রহ করে রেটিং দিন');
+            return;
+        }
+
+        if (imageInput.files && imageInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                saveReview(name, bloodGroup, text, e.target.result);
+            }
+            reader.readAsDataURL(imageInput.files[0]);
+        } else {
+            saveReview(name, bloodGroup, text, 'https://randomuser.me/api/portraits/men/' + Math.floor(Math.random() * 10) + '.jpg');
+        }
+    }
+
+    function saveReview(name, bloodGroup, text, image) {
+        const newReview = {
+            id: Date.now(),
+            name: name,
+            bloodGroup: bloodGroup,
+            rating: currentRating,
+            text: text,
+            image: image,
+            date: new Date().toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' }),
+            donations: 1,
+            likes: 0
+        };
+        
+        reviews = [newReview, ...reviews];
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+        
+        currentReviewIndex = 0;
+        loadReviews();
+        createReviewDots();
+        hideReviewForm();
+        showToast('ধন্যবাদ! আপনার মতামত জমা দেওয়া হয়েছে');
+        resetRating();
+    }
+
+    // এডমিন প্যানেল ফাংশন - লগইন স্টেট সংরক্ষণ সহ
+    function showAdminPanel() {
+        document.getElementById('mainContent').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        
+        if (isAdminLoggedIn) {
+            document.getElementById('adminLoginForm').style.display = 'none';
+            document.getElementById('adminDashboard').style.display = 'block';
+            loadAdminData();
+        } else {
+            document.getElementById('adminLoginForm').style.display = 'block';
+            document.getElementById('adminDashboard').style.display = 'none';
+        }
+    }
+
+    function hideAdminPanel() {
+        document.getElementById('mainContent').style.display = 'block';
+        document.getElementById('adminPanel').style.display = 'none';
+    }
+
+    function adminLogin() {
+        const username = document.getElementById('adminUsername').value;
+        const password = document.getElementById('adminPassword').value;
+        
+        if (username === 'admin' && password === 'blood123') {
+            isAdminLoggedIn = true;
+            localStorage.setItem('adminLoggedIn', 'true');
+            
+            document.getElementById('adminLoginForm').style.display = 'none';
+            document.getElementById('adminDashboard').style.display = 'block';
+            loadAdminData();
+            applyCustomization();
+            showToast('স্বাগতম এডমিন!');
+        } else {
+            alert('ভুল ইউজারনেম অথবা পাসওয়ার্ড!');
+        }
+    }
+
+    function adminLogout() {
+        isAdminLoggedIn = false;
+        localStorage.removeItem('adminLoggedIn');
+        
+        document.getElementById('adminLoginForm').style.display = 'block';
+        document.getElementById('adminDashboard').style.display = 'none';
+        document.getElementById('adminUsername').value = '';
+        document.getElementById('adminPassword').value = '';
+        showToast('লগআউট করা হয়েছে');
+    }
+
+    // সাইটে যান ফাংশন - নতুন যোগ করা হয়েছে
+    function goToSite() {
+        document.getElementById('mainContent').style.display = 'block';
+        document.getElementById('adminPanel').style.display = 'none';
+        // এডমিন লগইন স্টেট রেখে দেওয়া হয়েছে, লগআউট হয়নি
+    }
+
+    function loadAdminData() {
+        updateAdminStats();
+        loadAdminDonors();
+        loadAdminRequests();
+        loadAdminDonationManagement();
+        loadAdminCampaigns();
+        loadAdminHistory();
+    }
+
+    function updateAdminStats() {
+        const adminTotalDonors = document.getElementById('adminTotalDonors');
+        const adminPendingRequests = document.getElementById('adminPendingRequests');
+        const adminTotalCampaigns = document.getElementById('adminTotalCampaigns');
+        const adminCompletedDonations = document.getElementById('adminCompletedDonations');
+        const adminActiveDonations = document.getElementById('adminActiveDonations');
+        
+        if (adminTotalDonors) adminTotalDonors.innerText = donors.length || 1247;
+        if (adminPendingRequests) adminPendingRequests.innerText = bloodRequests.filter(r => r.status === 'pending').length || 5;
+        if (adminTotalCampaigns) adminTotalCampaigns.innerText = campaigns.length || 2;
+        if (adminCompletedDonations) adminCompletedDonations.innerText = donations.filter(d => d.status === 'completed').length || 892;
+        if (adminActiveDonations) adminActiveDonations.innerText = bloodRequests.filter(r => r.status === 'approved' && r.donationStatus !== 'completed' && r.donationStatus !== 'cancelled').length || 12;
+    }
+
+    function showAdminTab(tabName) {
+        document.querySelectorAll('.admin-tab').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+        
+        const adminDonorsTab = document.getElementById('adminDonorsTab');
+        const adminRequestsTab = document.getElementById('adminRequestsTab');
+        const adminDonationTab = document.getElementById('adminDonationTab');
+        const adminCampaignsTab = document.getElementById('adminCampaignsTab');
+        const adminHistoryTab = document.getElementById('adminHistoryTab');
+        const adminCustomizeTab = document.getElementById('adminCustomizeTab');
+        
+        if (adminDonorsTab) adminDonorsTab.style.display = 'none';
+        if (adminRequestsTab) adminRequestsTab.style.display = 'none';
+        if (adminDonationTab) adminDonationTab.style.display = 'none';
+        if (adminCampaignsTab) adminCampaignsTab.style.display = 'none';
+        if (adminHistoryTab) adminHistoryTab.style.display = 'none';
+        if (adminCustomizeTab) adminCustomizeTab.style.display = 'none';
+        
+        if (tabName === 'donors' && adminDonorsTab) adminDonorsTab.style.display = 'block';
+        else if (tabName === 'requests' && adminRequestsTab) adminRequestsTab.style.display = 'block';
+        else if (tabName === 'donation' && adminDonationTab) adminDonationTab.style.display = 'block';
+        else if (tabName === 'campaigns' && adminCampaignsTab) adminCampaignsTab.style.display = 'block';
+        else if (tabName === 'history' && adminHistoryTab) adminHistoryTab.style.display = 'block';
+        else if (tabName === 'customize' && adminCustomizeTab) adminCustomizeTab.style.display = 'block';
+    }
+
+    // ডাটা ডিলিট ফাংশন - এলোমেলো টেক্সট তৈরি না করে শুধু ডাটা মুছে ফেলা
+    function deleteAllDonors() {
+        if (confirm('সব ডোনার ডিলিট করতে চান? এই কাজ অপরিবর্তনীয়!')) {
+            donors = [];
+            localStorage.setItem('donors', JSON.stringify(donors));
+            loadAdminDonors();
+            loadDonorCards();
+            updateAdminStats();
+            showToast('সব ডোনার ডিলিট করা হয়েছে');
+        }
+    }
+
+    function deleteAllRequests() {
+        if (confirm('সব রক্তের রিকোয়েস্ট ডিলিট করতে চান? এই কাজ অপরিবর্তনীয়!')) {
+            bloodRequests = [];
+            localStorage.setItem('bloodRequests', JSON.stringify(bloodRequests));
+            loadAdminRequests();
+            loadAdminDonationManagement();
+            loadEmergencyRequests();
+            updateAdminStats();
+            showToast('সব রিকোয়েস্ট ডিলিট করা হয়েছে');
+        }
+    }
+
+    function deleteAllCampaigns() {
+        if (confirm('সব ক্যাম্পেইন ডিলিট করতে চান? এই কাজ অপরিবর্তনীয়!')) {
+            campaigns = [];
+            localStorage.setItem('campaigns', JSON.stringify(campaigns));
+            loadAdminCampaigns();
+            loadCampaigns();
+            updateAdminStats();
+            showToast('সব ক্যাম্পেইন ডিলিট করা হয়েছে');
+        }
+    }
+
+    function deleteAllDonations() {
+        if (confirm('সব ডোনেশন রেকর্ড ডিলিট করতে চান? এই কাজ অপরিবর্তনীয়!')) {
+            donations = [];
+            localStorage.setItem('donations', JSON.stringify(donations));
+            loadAdminHistory();
+            loadAdminDonationManagement();
+            updateAdminStats();
+            showToast('সব ডোনেশন রেকর্ড ডিলিট করা হয়েছে');
+        }
+    }
+
+    // এডমিন ডোনার টেবিল - এলোমেলো টেক্সট না দেখিয়ে শুধু ডাটা দেখানো
+    function loadAdminDonors() {
+        const tbody = document.getElementById('adminDonorsTable');
+        if (!tbody) return;
+        
+        tbody.innerHTML = '';
+        
+        const displayDonors = donors.length > 0 ? donors : generateSampleDonors();
+        
+        // হেডার আপডেট করা - শুধুমাত্র একবার ডিলিট বাটন যোগ করা
+        const tableContainer = document.querySelector('#adminDonorsTab');
+        if (tableContainer) {
+            const existingHeader = tableContainer.querySelector('.admin-donors-header');
+            if (!existingHeader) {
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'admin-donors-header';
+                headerDiv.style.display = 'flex';
+                headerDiv.style.justifyContent = 'space-between';
+                headerDiv.style.alignItems = 'center';
+                headerDiv.style.marginBottom = '20px';
+                headerDiv.innerHTML = `
+                    <h3><i class="fas fa-users"></i> নিবন্ধিত ডোনার</h3>
+                    <button class="btn-reject" onclick="deleteAllDonors()" style="padding: 10px 20px;">
+                        <i class="fas fa-trash-alt"></i> সব ডোনার ডিলিট
+                    </button>
+                `;
+                tableContainer.insertBefore(headerDiv, tableContainer.querySelector('.admin-table'));
+            }
+        }
+        
+        displayDonors.forEach(donor => {
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td><img src="${donor.image}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;"></td>
+                <td>${donor.name}</td>
+                <td>${donor.phone || '+880 1XXX-XXXXXX'}</td>
+                <td><strong>${donor.bloodGroup}</strong></td>
+                <td>${donor.district || 'ঢাকা'}</td>
+                <td>${donor.status === 'approved' ? '✅ অ্যাপ্রুভড' : '⏳ পেন্ডিং'}</td>
+                <td>
+                    <button class="btn-approve" onclick="approveDonor(${donor.id})">অ্যাপ্রুভ</button>
+                    <button class="btn-reject" onclick="rejectDonor(${donor.id})">ডিলিট</button>
+                </td>
+            `;
+        });
+
+        const donorFilter = document.getElementById('donorFilter');
+        if (donorFilter) {
+            donorFilter.addEventListener('keyup', function() {
+                const filterValue = this.value.toLowerCase();
+                const rows = tbody.getElementsByTagName('tr');
+                
+                for (let row of rows) {
+                    const bloodGroup = row.cells[3].innerText.toLowerCase();
+                    const district = row.cells[4].innerText.toLowerCase();
+                    row.style.display = (bloodGroup.includes(filterValue) || district.includes(filterValue)) ? '' : 'none';
+                }
+            });
+        }
+    }
+
+    // এডমিন রিকোয়েস্ট টেবিল - এলোমেলো টেক্সট না দেখিয়ে শুধু ডাটা দেখানো
+    function loadAdminRequests() {
+        const tbody = document.getElementById('adminRequestsTable');
+        if (!tbody) return;
+        
+        tbody.innerHTML = '';
+        
+        // হেডার আপডেট করা
+        const tableContainer = document.querySelector('#adminRequestsTab');
+        if (tableContainer) {
+            const existingHeader = tableContainer.querySelector('.admin-requests-header');
+            if (!existingHeader) {
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'admin-requests-header';
+                headerDiv.style.display = 'flex';
+                headerDiv.style.justifyContent = 'space-between';
+                headerDiv.style.alignItems = 'center';
+                headerDiv.style.marginBottom = '20px';
+                headerDiv.innerHTML = `
+                    <h3><i class="fas fa-exclamation-triangle"></i> নতুন রক্তের রিকোয়েস্ট</h3>
+                    <button class="btn-reject" onclick="deleteAllRequests()" style="padding: 10px 20px;">
+                        <i class="fas fa-trash-alt"></i> সব রিকোয়েস্ট ডিলিট
+                    </button>
+                `;
+                tableContainer.insertBefore(headerDiv, tableContainer.querySelector('.admin-table'));
+            }
+        }
+        
+        const pendingRequests = bloodRequests.filter(r => r.status === 'pending');
+        
+        if (pendingRequests.length === 0) {
+            const row = tbody.insertRow();
+            row.innerHTML = '<td colspan="10" style="text-align: center;">কোন পেন্ডিং রিকোয়েস্ট নেই</td>';
+            return;
+        }
+        
+        pendingRequests.forEach(request => {
+            const patientImage = request.patientImage || `https://ui-avatars.com/api/?name=${request.patientName.replace(/ /g, '+')}&background=D32F2F&color=fff&size=100`;
+            
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td>${request.id}</td>
+                <td>${request.patientName}</td>
+                <td><img src="${patientImage}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;"></td>
+                <td><strong>${request.bloodGroup}</strong></td>
+                <td>${request.units}</td>
+                <td>${request.hospital}</td>
+                <td>${request.contactPhone}</td>
+                <td>${request.needDate}</td>
+                <td><span class="status-badge status-pending">⏳ অপেক্ষমান</span></td>
+                <td>
+                    <button class="btn-approve" onclick="approveRequest(${request.id})">অ্যাপ্রুভ</button>
+                    <button class="btn-reject" onclick="rejectRequest(${request.id})">রিজেক্ট</button>
+                </td>
+            `;
+        });
+    }
+
+    // এডমিন ডোনেশন ম্যানেজমেন্ট - ফিক্সড ভার্সন
+    function loadAdminDonationManagement() {
+        const container = document.getElementById('donationManagementContainer');
+        if (!container) return;
+        
+        // কন্টেইনার ক্লিয়ার করুন
+        container.innerHTML = '';
+        
+        // হেডার যোগ করা - শুধুমাত্র একবার
+        const headerDiv = document.createElement('div');
+        headerDiv.className = 'admin-donation-header';
+        headerDiv.style.display = 'flex';
+        headerDiv.style.justifyContent = 'space-between';
+        headerDiv.style.alignItems = 'center';
+        headerDiv.style.marginBottom = '20px';
+        headerDiv.innerHTML = `
+            <h3><i class="fas fa-tasks"></i> ব্লাড ডোনেশন ম্যানেজমেন্ট</h3>
+            <button class="btn-reject" onclick="deleteAllDonations()" style="padding: 10px 20px;">
+                <i class="fas fa-trash-alt"></i> সব ডোনেশন রেকর্ড ডিলিট
+            </button>
+        `;
+        container.appendChild(headerDiv);
+        
+        const approvedRequests = bloodRequests.filter(r => r.status === 'approved' && r.donationStatus !== 'completed' && r.donationStatus !== 'cancelled');
+        const approvedDonors = donors.filter(d => d.status === 'approved');
+        
+        if (approvedRequests.length === 0) {
+            const noRequestMsg = document.createElement('p');
+            noRequestMsg.style.textAlign = 'center';
+            noRequestMsg.style.padding = '20px';
+            noRequestMsg.innerText = 'কোন সক্রিয় ডোনেশন রিকোয়েস্ট নেই';
+            container.appendChild(noRequestMsg);
+            return;
+        }
+        
+        approvedRequests.sort((a, b) => new Date(a.needDate) - new Date(b.needDate)).forEach(request => {
+            const matchingDonors = approvedDonors.filter(d => d.bloodGroup === request.bloodGroup);
+            
+            const patientImage = request.patientImage || `https://ui-avatars.com/api/?name=${request.patientName.replace(/ /g, '+')}&background=D32F2F&color=fff&size=100`;
+            
+            const statusClass = request.donationStatus === 'pending' ? 'status-pending' :
+                request.donationStatus === 'processing' ? 'status-processing' : '';
+            const statusText = request.donationStatus === 'pending' ? '⏳ অপেক্ষমান' :
+                request.donationStatus === 'processing' ? '🔄 প্রক্রিয়াধীন' : '';
+            
+            const card = document.createElement('div');
+            card.className = 'donation-management-card';
+            
+            const today = new Date().toISOString().split('T')[0];
+            const needDate = request.needDate;
+            const isUrgent = needDate < today;
+            
+            card.innerHTML = `
+                <div class="patient-header">
+                    <img src="${patientImage}" alt="${request.patientName}">
+                    <div class="patient-info">
+                        <h3>${request.patientName} ${isUrgent ? '<span style="color: var(--primary-color);">(জরুরি)</span>' : ''}</h3>
+                        <p><i class="fas fa-tint" style="color: var(--primary-color);"></i> প্রয়োজন: ${request.bloodGroup} (${request.units} ইউনিট)</p>
+                        <p><i class="fas fa-hospital"></i> ${request.hospital}</p>
+                        <p><i class="fas fa-calendar"></i> প্রয়োজন: ${request.needDate} ${request.needTime}</p>
+                        <p><span class="status-badge ${statusClass}">${statusText}</span></p>
+                    </div>
+                </div>
+                
+                <div class="matching-section">
+                    <div>
+                        <label style="font-weight: 600;"><i class="fas fa-user-md"></i> ডোনার সিলেক্ট করুন:</label>
+                        <select id="donorSelect_${request.id}" class="select-donor" style="margin-top: 5px;">
+                            <option value="">ডোনার নির্বাচন করুন</option>
+                            ${matchingDonors.map(donor => `
+                                <option value="${donor.id}" ${request.assignedDonor === donor.id ? 'selected' : ''}>
+                                    ${donor.name} (${donor.bloodGroup}) - ${donor.district} - সর্বশেষ: ${donor.lastDonation || 'কখনো দেননি'}
+                                </option>
+                            `).join('')}
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label style="font-weight: 600;"><i class="fas fa-calendar-check"></i> ডোনেশন তারিখ:</label>
+                        <input type="date" id="donationDate_${request.id}" class="select-donor" style="margin-top: 5px;"
+                                value="${request.donationDate || request.needDate}" min="${today}">
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-end;">
+                        <button class="btn-approve" onclick="assignDonor(${request.id})" style="width: 100%;">
+                            <i class="fas fa-check"></i> অ্যাসাইন করুন
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="status-buttons">
+                    <button class="btn-approve" style="background: #3498db;" onclick="updateDonationStatus(${request.id}, 'processing')">
+                        <i class="fas fa-spinner"></i> প্রক্রিয়াধীন
+                    </button>
+                    <button class="btn-approve" style="background: #27AE60;" onclick="updateDonationStatus(${request.id}, 'completed')">
+                        <i class="fas fa-check-circle"></i> সম্পন্ন
+                    </button>
+                    <button class="btn-reject" onclick="updateDonationStatus(${request.id}, 'cancelled')">
+                        <i class="fas fa-times-circle"></i> বাতিল
+                    </button>
+                </div>
+                
+                ${request.assignedDonor ? `
+                    <div class="assigned-info">
+                        <i class="fas fa-user-check"></i> 
+                        <strong>অ্যাসাইন করা ডোনার:</strong> 
+                        ${approvedDonors.find(d => d.id === request.assignedDonor)?.name}
+                        (${approvedDonors.find(d => d.id === request.assignedDonor)?.phone})
+                        ${request.donationDate ? `<br><i class="fas fa-calendar"></i> ডোনেশন তারিখ: ${request.donationDate}` : ''}
+                    </div>
+                ` : ''}
+            `;
+            
+            container.appendChild(card);
+        });
+    }
+
+    // ডোনার অ্যাসাইন
+    function assignDonor(requestId) {
+        const select = document.getElementById(`donorSelect_${requestId}`);
+        if (!select) return;
+        
+        const donorId = parseInt(select.value);
+        const donationDate = document.getElementById(`donationDate_${requestId}`).value;
+
+        if (!donorId || isNaN(donorId)) {
+            alert('অনুগ্রহ করে একটি ডোনার নির্বাচন করুন');
+            return;
+        }
+
+        if (!donationDate) {
+            alert('অনুগ্রহ করে ডোনেশন তারিখ নির্বাচন করুন');
+            return;
+        }
+
+        const donor = donors.find(d => d.id === donorId);
+        const request = bloodRequests.find(r => r.id === requestId);
+
+        if (!donor || !request) {
+            alert('ডোনার বা রিকোয়েস্ট পাওয়া যায়নি');
+            return;
+        }
+
+        // রিকোয়েস্ট আপডেট
+        bloodRequests = bloodRequests.map(req => {
+            if (req.id === requestId) {
+                return {
+                    ...req,
+                    assignedDonor: donorId,
+                    assignedDonorName: donor.name,
+                    donationStatus: 'processing',
+                    donationDate: donationDate
+                };
+            }
+            return req;
+        });
+
+        localStorage.setItem('bloodRequests', JSON.stringify(bloodRequests));
+        
+        // ডোনেশন রেকর্ড তৈরি
+        const donation = {
+            id: Date.now(),
+            requestId: requestId,
+            patientName: request.patientName,
+            donorId: donorId,
+            donorName: donor.name,
+            bloodGroup: request.bloodGroup,
+            units: request.units,
+            hospital: request.hospital,
+            needDate: request.needDate,
+            donationDate: donationDate,
+            status: 'processing'
+        };
+        
+        donations.push(donation);
+        localStorage.setItem('donations', JSON.stringify(donations));
+
+        loadAdminDonationManagement();
+        loadAdminHistory();
+        loadAdminRequests();
+        updateAdminStats();
+        loadEmergencyRequests();
+        
+        showToast(`${donor.name} কে ${donationDate} তারিখের জন্য অ্যাসাইন করা হয়েছে`);
+    }
+
+    // ডোনেশন স্ট্যাটাস আপডেট
+    function updateDonationStatus(requestId, status) {
+        bloodRequests = bloodRequests.map(req => {
+            if (req.id === requestId) {
+                return {...req, donationStatus: status};
+            }
+            return req;
+        });
+
+        if (status === 'completed') {
+            donations = donations.map(d => {
+                if (d.requestId === requestId) {
+                    return {...d, status: 'completed'};
+                }
+                return d;
+            });
+
+            const request = bloodRequests.find(r => r.id === requestId);
+            if (request && request.assignedDonor) {
+                donors = donors.map(donor => {
+                    if (donor.id === request.assignedDonor) {
+                        return {
+                            ...donor, 
+                            lastDonation: request.donationDate ? new Date(request.donationDate).toLocaleDateString('bn-BD', { day: 'numeric', month: 'short', year: 'numeric' }) : donor.lastDonation,
+                            donationCount: (donor.donationCount || 0) + request.units
+                        };
+                    }
+                    return donor;
+                });
+            }
+        } else if (status === 'cancelled') {
+            donations = donations.map(d => {
+                if (d.requestId === requestId) {
+                    return {...d, status: 'cancelled'};
+                }
+                return d;
+            });
+        } else if (status === 'processing') {
+            donations = donations.map(d => {
+                if (d.requestId === requestId) {
+                    return {...d, status: 'processing'};
+                }
+                return d;
+            });
+        }
+
+        localStorage.setItem('bloodRequests', JSON.stringify(bloodRequests));
+        localStorage.setItem('donations', JSON.stringify(donations));
+        localStorage.setItem('donors', JSON.stringify(donors));
+
+        loadAdminDonationManagement();
+        loadAdminHistory();
+        loadEmergencyRequests();
+        updateAdminStats();
+        updateStats();
+        loadDonorCards();
+        
+        const statusMap = {
+            'processing': 'প্রক্রিয়াধীন',
+            'completed': 'সম্পন্ন',
+            'cancelled': 'বাতিল'
+        };
+        showToast(`স্ট্যাটাস আপডেট করা হয়েছে: ${statusMap[status]}`);
+    }
+
+    // এডমিন ক্যাম্পেইন টেবিল
+    function loadAdminCampaigns() {
+        const tbody = document.getElementById('adminCampaignsTable');
+        if (!tbody) return;
+        
+        tbody.innerHTML = '';
+        
+        const tableContainer = document.querySelector('#adminCampaignsTab');
+        if (tableContainer) {
+            const existingHeader = tableContainer.querySelector('.admin-campaigns-header');
+            if (!existingHeader) {
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'admin-campaigns-header';
+                headerDiv.style.display = 'flex';
+                headerDiv.style.justifyContent = 'space-between';
+                headerDiv.style.alignItems = 'center';
+                headerDiv.style.marginBottom = '20px';
+                headerDiv.innerHTML = `
+                    <h3><i class="fas fa-calendar-alt"></i> ব্লাড ক্যাম্পেইন</h3>
+                    <div>
+                        <button class="btn-primary" onclick="showAddCampaignForm()" style="margin-right: 10px;">
+                            <i class="fas fa-plus"></i> নতুন ক্যাম্পেইন
+                        </button>
+                        <button class="btn-reject" onclick="deleteAllCampaigns()" style="padding: 10px 20px;">
+                            <i class="fas fa-trash-alt"></i> সব ক্যাম্পেইন ডিলিট
+                        </button>
+                    </div>
+                `;
+                tableContainer.insertBefore(headerDiv, tableContainer.querySelector('.admin-table'));
+            }
+        }
+        
+        campaigns.forEach(campaign => {
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td>${campaign.id}</td>
+                <td>${campaign.title}</td>
+                <td>${campaign.date}</td>
+                <td>${campaign.location}</td>
+                <td>${campaign.organizer}</td>
+                <td>
+                    <button class="btn-reject" onclick="deleteCampaign(${campaign.id})">ডিলিট</button>
+                </td>
+            `;
+        });
+    }
+
+    // এডমিন ইতিহাস টেবিল
+    function loadAdminHistory() {
+        const tbody = document.getElementById('adminHistoryTable');
+        if (!tbody) return;
+        
+        tbody.innerHTML = '';
+        
+        const tableContainer = document.querySelector('#adminHistoryTab');
+        if (tableContainer) {
+            const existingHeader = tableContainer.querySelector('.admin-history-header');
+            if (!existingHeader) {
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'admin-history-header';
+                headerDiv.style.display = 'flex';
+                headerDiv.style.justifyContent = 'space-between';
+                headerDiv.style.alignItems = 'center';
+                headerDiv.style.marginBottom = '20px';
+                headerDiv.innerHTML = `
+                    <h3><i class="fas fa-history"></i> রক্তদানের ইতিহাস</h3>
+                    <button class="btn-reject" onclick="deleteAllDonations()" style="padding: 10px 20px;">
+                        <i class="fas fa-trash-alt"></i> সব ডোনেশন রেকর্ড ডিলিট
+                    </button>
+                `;
+                tableContainer.insertBefore(headerDiv, tableContainer.querySelector('.admin-table'));
+            }
+        }
+        
+        if (donations.length === 0) {
+            const row = tbody.insertRow();
+            row.innerHTML = '<td colspan="8" style="text-align: center;">কোন ডোনেশন রেকর্ড নেই</td>';
+            return;
+        }
+        
+        donations.sort((a, b) => new Date(b.donationDate || 0) - new Date(a.donationDate || 0)).forEach(donation => {
+            const statusClass = donation.status === 'completed' ? 'status-completed' :
+                                donation.status === 'processing' ? 'status-processing' :
+                                donation.status === 'cancelled' ? 'status-cancelled' : 'status-pending';
+            const statusText = donation.status === 'completed' ? '✅ সম্পন্ন' :
+                               donation.status === 'processing' ? '🔄 প্রক্রিয়াধীন' :
+                               donation.status === 'cancelled' ? '❌ বাতিল' : '⏳ অপেক্ষমান';
+            
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td>${donation.id}</td>
+                <td>${donation.patientName}</td>
+                <td>${donation.donorName}</td>
+                <td><strong>${donation.bloodGroup}</strong></td>
+                <td>${donation.hospital}</td>
+                <td>${donation.needDate || 'N/A'}</td>
+                <td>${donation.donationDate || new Date(donation.donationDate).toLocaleDateString('bn-BD')}</td>
+                <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+            `;
+        });
+    }
+
+    // ডোনার অ্যাপ্রুভ
+    function approveDonor(id) {
+        donors = donors.map(donor => donor.id == id ? {...donor, status: 'approved'} : donor);
+        localStorage.setItem('donors', JSON.stringify(donors));
+        loadAdminDonors();
+        loadDonorCards();
+        updateAdminStats();
+        showToast('ডোনার অ্যাপ্রুভ করা হয়েছে!');
+    }
+
+    function rejectDonor(id) {
+        if(confirm('ডোনারকে ডিলিট করতে চান?')) {
+            donors = donors.filter(donor => donor.id != id);
+            localStorage.setItem('donors', JSON.stringify(donors));
+            loadAdminDonors();
+            loadDonorCards();
+            updateAdminStats();
+            showToast('ডোনার ডিলিট করা হয়েছে');
+        }
+    }
+
+    function approveRequest(id) {
+        bloodRequests = bloodRequests.map(request =>
+            request.id == id ? {...request, status: 'approved', donationStatus: 'pending'} : request
+        );
+        localStorage.setItem('bloodRequests', JSON.stringify(bloodRequests));
+        loadAdminRequests();
+        loadAdminDonationManagement();
+        loadEmergencyRequests();
+        updateAdminStats();
+        showToast('রিকোয়েস্ট অ্যাপ্রুভ করা হয়েছে!');
+    }
+
+    function rejectRequest(id) {
+        if(confirm('রিকোয়েস্টটি রিজেক্ট করতে চান?')) {
+            bloodRequests = bloodRequests.filter(request => request.id != id);
+            localStorage.setItem('bloodRequests', JSON.stringify(bloodRequests));
+            loadAdminRequests();
+            updateAdminStats();
+            showToast('রিকোয়েস্ট রিজেক্ট করা হয়েছে');
+        }
+    }
+
+    function deleteCampaign(id) {
+        if(confirm('ক্যাম্পেইনটি ডিলিট করতে চান?')) {
+            campaigns = campaigns.filter(campaign => campaign.id !== id);
+            localStorage.setItem('campaigns', JSON.stringify(campaigns));
+            loadAdminCampaigns();
+            loadCampaigns();
+            updateAdminStats();
+            showToast('ক্যাম্পেইন ডিলিট করা হয়েছে');
+        }
+    }
+
+    function showAddCampaignForm() {
+        const campaignModal = document.getElementById('campaignModal');
+        if (campaignModal) campaignModal.classList.add('active');
+    }
+
+    function hideCampaignModal() {
+        const campaignModal = document.getElementById('campaignModal');
+        if (campaignModal) campaignModal.classList.remove('active');
+    }
+
+    function addCampaign(event) {
+        event.preventDefault();
+        const newCampaign = {
+            id: Date.now(),
+            title: document.getElementById('campaignTitle').value,
+            date: document.getElementById('campaignDate').value,
+            location: document.getElementById('campaignLocation').value,
+            organizer: document.getElementById('campaignOrganizer').value,
+            details: document.getElementById('campaignDetails').value
+        };
+        campaigns.push(newCampaign);
+        localStorage.setItem('campaigns', JSON.stringify(campaigns));
+        hideCampaignModal();
+        loadAdminCampaigns();
+        loadCampaigns();
+        updateAdminStats();
+        showToast('নতুন ক্যাম্পেইন যোগ করা হয়েছে!');
+        event.target.reset();
+    }
+
+    // অন্যান্য ফাংশন
+    function updateStats() {
+        const totalDonors = document.getElementById('totalDonors');
+        const totalDonations = document.getElementById('totalDonations');
+        
+        const approvedDonors = donors.filter(d => d.status === 'approved').length;
+        const completedDonations = donations.filter(d => d.status === 'completed').length;
+        
+        if (totalDonors) totalDonors.innerText = approvedDonors || 1247;
+        if (totalDonations) totalDonations.innerText = completedDonations || 892;
+    }
+
+    function loadEmergencyRequests() {
+        const container = document.getElementById('emergencyRequests');
+        if (!container) return;
+        
+        const approvedRequests = bloodRequests.filter(r => r.status === 'approved' && r.donationStatus !== 'completed' && r.donationStatus !== 'cancelled');
+        const sortedRequests = approvedRequests.sort((a, b) => new Date(a.needDate) - new Date(b.needDate)).slice(0, 6);
+        
+        container.innerHTML = '';
+        if (sortedRequests.length === 0) {
+            container.innerHTML = '<p class="no-requests">বর্তমানে কোন জরুরি রিকোয়েস্ট নেই</p>';
+            return;
+        }
+        
+        sortedRequests.forEach(request => {
+            const today = new Date().toISOString().split('T')[0];
+            const isUrgent = request.needDate < today;
+            
+            const statusClass = request.donationStatus === 'pending' ? 'status-pending' :
+                                request.donationStatus === 'processing' ? 'status-processing' : '';
+            const statusText = request.donationStatus === 'pending' ? '⏳ অপেক্ষমান' :
+                               request.donationStatus === 'processing' ? '🔄 প্রক্রিয়াধীন' : '';
+            
+            const card = document.createElement('div');
+            card.className = 'request-card';
+            card.innerHTML = `
+                <h3><i class="fas fa-tint"></i> ${request.bloodGroup} - ${request.units} ইউনিট ${isUrgent ? '<span style="color: var(--primary-color);">(জরুরি)</span>' : ''}</h3>
+                <p><i class="fas fa-hospital"></i> ${request.hospital}</p>
+                <p><i class="fas fa-calendar"></i> প্রয়োজন: ${request.needDate} ${request.needTime}</p>
+                <p><i class="fas fa-phone"></i> ${request.contactPhone}</p>
+                <p><small>রোগীর নাম: ${request.patientName}</small></p>
+                <p><span class="status-badge ${statusClass}">${statusText}</span></p>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function loadCampaigns() {
+        const container = document.getElementById('campaignList');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        campaigns.forEach(campaign => {
+            const card = document.createElement('div');
+            card.className = 'campaign-card';
+            card.innerHTML = `
+                <div class="campaign-image"><i class="fas fa-hand-holding-heart"></i></div>
+                <div class="campaign-content">
+                    <h3>${campaign.title}</h3>
+                    <p><i class="fas fa-calendar"></i> ${campaign.date}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ${campaign.location}</p>
+                    <p><i class="fas fa-user-md"></i> ${campaign.organizer}</p>
+                    <p>${campaign.details || ''}</p>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function searchDonors() {
+        const location = document.getElementById('searchLocation')?.value.toLowerCase();
+        const bloodGroup = document.getElementById('searchBloodGroup')?.value;
+        
+        if (!location && !bloodGroup) {
+            alert('অনুগ্রহ করে লোকেশন অথবা ব্লাড গ্রুপ সিলেক্ট করুন');
+            return;
+        }
+        
+        let results = allDonors;
+        if (location) {
+            results = results.filter(d => 
+                (d.district && d.district.toLowerCase().includes(location)) ||
+                (d.thana && d.thana.toLowerCase().includes(location))
+            );
+        }
+        if (bloodGroup) {
+            results = results.filter(d => d.bloodGroup === bloodGroup);
+        }
+        
+        if (results.length === 0) {
+            alert('কোন ডোনার পাওয়া যায়নি');
+        } else {
+            let message = 'পাওয়া গেছে ' + results.length + ' জন ডোনার:\n';
+            results.slice(0, 5).forEach(d => {
+                message += `🔴 নাম: ${d.name}\n🩸 গ্রুপ: ${d.bloodGroup}\n📍 এলাকা: ${d.district}, ${d.thana}\n📞 ফোন: ${d.phone}\n🩸 রক্তদান: ${d.donationCount} বার\n📅 সর্বশেষ: ${d.lastDonation}\n\n`;
+            });
+            alert(message);
+        }
+    }
+
+    function toggleMenu() {
+        const navMenu = document.getElementById('navMenu');
+        if (navMenu) navMenu.classList.toggle('active');
+    }
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showSearchSection() {
+        const searchInput = document.getElementById('searchLocation');
+        if (searchInput) searchInput.focus();
+    }
+
+    function changeStep(direction) {
+        const newStep = currentStep + direction;
+        if (newStep < 1 || newStep > 3) return;
+        
+        document.getElementById(`step${currentStep}-content`).style.display = 'none';
+        document.getElementById(`step${currentStep}`).classList.remove('active');
+        document.getElementById(`step${newStep}-content`).style.display = 'block';
+        document.getElementById(`step${newStep}`).classList.add('active');
+        document.getElementById('prevBtn').disabled = newStep === 1;
+        
+        if (newStep === 3) {
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'flex';
+        } else {
+            document.getElementById('nextBtn').style.display = 'flex';
+            document.getElementById('submitBtn').style.display = 'none';
+        }
+        
+        currentStep = newStep;
+    }
+
+    // স্ক্রল ইফেক্ট
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        const backToTop = document.getElementById('backToTop');
+        if (window.scrollY > 100) {
+            if (header) header.style.background = 'rgba(255, 255, 255, 0.98)';
+            if (header) header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            if (backToTop) backToTop.style.display = 'flex';
+        } else {
+            if (header) header.style.background = 'rgba(255, 255, 255, 0.9)';
+            if (header) header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            if (backToTop) backToTop.style.display = 'none';
+        }
+    });
+
+    // মাউস হোভার ইফেক্ট
+    const teamCarousel = document.querySelector('.team-carousel-container');
+    const reviewsCarousel = document.querySelector('.reviews-carousel-container');
+    
+    if (teamCarousel) {
+        teamCarousel.addEventListener('mouseenter', () => clearInterval(teamInterval));
+        teamCarousel.addEventListener('mouseleave', () => startTeamAutoSlide());
+    }
+    
+    if (reviewsCarousel) {
+        reviewsCarousel.addEventListener('mouseenter', () => clearInterval(reviewInterval));
+        reviewsCarousel.addEventListener('mouseleave', () => startReviewAutoSlide());
+    }
+
+    // ফর্ম সাবমিট
+    const donorForm = document.getElementById('donorRegistrationForm');
+    if (donorForm) {
+        donorForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (currentStep < 3) {
+                alert('অনুগ্রহ করে সকল ধাপ সম্পন্ন করুন');
+                return;
+            }
+            
+            const imageInput = document.getElementById('donorImageInput');
+            
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    saveDonor(ev.target.result);
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                saveDonor('https://randomuser.me/api/portraits/men/' + Math.floor(Math.random() * 10) + '.jpg');
+            }
+        });
+    }
+
+    function saveDonor(image) {
+        const donor = {
+            id: Date.now(),
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            dob: document.getElementById('dob').value,
+            gender: document.getElementById('gender').value,
+            bloodGroup: document.getElementById('bloodGroup').value,
+            weight: document.getElementById('weight').value,
+            district: document.getElementById('district').value,
+            thana: document.getElementById('thana').value,
+            image: image,
+            status: 'pending',
+            donationCount: 0,
+            lastDonation: 'কখনো দেননি',
+            registrationDate: new Date().toISOString()
+        };
+        
+        donors.push(donor);
+        localStorage.setItem('donors', JSON.stringify(donors));
+        
+        alert('রেজিস্ট্রেশন সফল হয়েছে! এডমিন অ্যাপ্রুভ করার পর আপনি ডোনার হিসেবে যুক্ত হবেন।');
+        donorForm.reset();
+        
+        currentStep = 1;
+        document.getElementById('step1-content').style.display = 'block';
+        document.getElementById('step2-content').style.display = 'none';
+        document.getElementById('step3-content').style.display = 'none';
+        document.getElementById('prevBtn').disabled = true;
+        document.getElementById('nextBtn').style.display = 'flex';
+        document.getElementById('submitBtn').style.display = 'none';
+        document.getElementById('donorImagePreview').style.display = 'none';
+    }
+
+    const bloodRequestForm = document.getElementById('bloodRequestForm');
+    if (bloodRequestForm) {
+        bloodRequestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const request = {
+                id: Date.now(),
+                patientName: document.getElementById('patientName').value,
+                patientImage: `https://ui-avatars.com/api/?name=${document.getElementById('patientName').value.replace(/ /g, '+')}&background=D32F2F&color=fff&size=100`,
+                bloodGroup: document.getElementById('requiredBloodGroup').value,
+                units: document.getElementById('units').value,
+                hospital: document.getElementById('hospital').value,
+                contactPhone: document.getElementById('contactPhone').value,
+                needDate: document.getElementById('needDate').value,
+                needTime: document.getElementById('needTime').value,
+                additionalNotes: document.getElementById('additionalNotes').value,
+                status: 'pending',
+                donationStatus: 'pending',
+                assignedDonor: null,
+                assignedDonorName: null,
+                donationDate: null,
+                requestDate: new Date().toISOString()
+            };
+            
+            bloodRequests.push(request);
+            localStorage.setItem('bloodRequests', JSON.stringify(bloodRequests));
+            
+            alert('আপনার রিকোয়েস্ট পাঠানো হয়েছে! এডমিন অ্যাপ্রুভ করার পর তা দেখানো হবে।');
+            bloodRequestForm.reset();
+        });
+    }
+
+    // অটো রিফ্রেশ
+    setInterval(() => {
+        loadDonorCards();
+        updateStats();
+        loadEmergencyRequests();
+    }, 30000);
+</script>
+</body>
+</html>
